@@ -5,13 +5,8 @@ import (
     "os"
     "syscall"
     "unsafe"
-    "path/filepath"
-    // "io/ioutil"
-    // "github.com/tidwall/gjson"
-    // "strconv"
-    // "fmt"
     "log"
-    // "time"
+    "time"
 )
 
 type dataType float32
@@ -31,14 +26,6 @@ func (d *DLLCaller) pathExists(path string) bool {
     return true
 }
 
-func GetExeDir() string {
-    exeDir, err := filepath.Abs(filepath.Dir(os.Args[0]))
-    if err != nil {
-        log.Fatal(err)
-    }
-    return exeDir
-}
-
 func StrPtr(s string) uintptr {
     return uintptr(unsafe.Pointer(syscall.StringToUTF16Ptr(s)))
 }
@@ -50,7 +37,6 @@ func INT8FromString(s string) ([]byte, error) {
         }
     }
         log.Println(s)
-        // time.Sleep(1)
         return []byte(s), nil
     }
     
@@ -79,12 +65,7 @@ func (d *DLLCaller) ReadData(dcaPath, signalName string) (int, []dataType) {
         size_uintptr, _, _ := dllReader.Call(
         callArgDcaPath, callArgSignalName,
         uintptr(unsafe.Pointer(&dataArray[0])))
-
-        // size_uintptr, _, _ := dllReader.Call(
-        // uintptr(unsafe.Pointer(StringToINT8Ptr(dcaPath))), 
-        // uintptr(unsafe.Pointer(StringToINT8Ptr(signalName))),
-        // uintptr(unsafe.Pointer(&dataArray[0])))
-
+        time.Sleep(10)
         size = int(size_uintptr)
     } else {
         log.Println("dcaPath does not exist: ", dcaPath)
