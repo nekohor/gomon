@@ -42,4 +42,7 @@ func (p *Part) ConcatPath(curDir, coilId, dcaFileName string) string {
 func (this *Part) BuildPartData(cfg *Config, dcaPath, signalName string) {
     this.data = make([]dataType, 1500)
     this.size, this.data = cfg.DLLCaller.ReadData(dcaPath, signalName)
+    if this.size == -1 {
+        this.size = 50
+    }
 }

@@ -42,7 +42,7 @@ func (this *Factor) BuildFactorData0() {
 func (this *Factor) BuildFactorData1(cfg *Config, partName string) {
     p := NewPart(cfg, partName)
     log.Println(p)
-    this.Data = make([]dataType, 1500)
+    this.Data = make([]dataType, p.size)
     for i := 0; i < p.size; i++ {
         this.Data[i] = p.data[i]
     }
@@ -52,7 +52,7 @@ func (t *Factor) BuildFactorData2(cfg *Config, os string, ds string) {
     p_os := NewPart(cfg, os)
     p_ds := NewPart(cfg, ds)
 
-    t.Data = make([]dataType, 1500)
+    t.Data = make([]dataType, p_os.size)
     for i := 0; i < p_os.size; i++ {
         t.Data[i] = p_os.data[i] - p_ds.data[i]
     }
@@ -63,7 +63,7 @@ func (t *Factor) BuildFactorData3(cfg *Config, os, ct, ds string) {
     p_ct := NewPart(cfg, ct)
     p_ds := NewPart(cfg, ds)
 
-    t.Data = make([]dataType, 1500)
+    t.Data = make([]dataType, p_ct.size)
     for i := 0; i < p_os.size; i++ {
         t.Data[i] = (p_os.data[i] + p_ds.data[i]) / 2 - p_ct.data[i]
     }

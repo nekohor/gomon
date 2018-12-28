@@ -23,7 +23,7 @@ func (app *Application) GetCoil(coilId string) *Coil {
     return coil
 }
 
-func (app *Application) GetCoils(resCoilIds []string) []Coil {
+func (app *Application) GetCoils(resCoilIds []string) map[string]*Coil {
     coils := make(map[string]*Coil)
     var coil *Coil
     for _, coilId := range resCoilIds {
@@ -31,6 +31,6 @@ func (app *Application) GetCoils(resCoilIds []string) []Coil {
         coil.PutData(app.Config)
         coils[coilId] = coil
     }
-    return make([]Coil,len(resCoilIds))
+    return coils
 }
 
