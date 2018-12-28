@@ -1,7 +1,7 @@
 @echo off
 
 start "" "C:/Program Files (x86)/Mozilla Firefox/firefox.exe" "http://localhost:9000"
-start C:\Users\Crystal\go\src\github.com\nekohor\gomon\app\app.exe %cd%
+start C:\Users\Crystal\go\src\github.com\nekohor\gomon\app\app.exe %cd% 1
 
 rem for /f "tokens=3,4" %%a in ('"reg query HKEY_CLASSES_ROOT\http\shell\open\command"') do (set SoftWareRoot=%%a %%b)
 rem for /f "tokens=3,4" %%a in ('"reg query HKEY_CLASSES_ROOT\http\shell\open\command"') do (set SoftWareRoot=%%a %%b)

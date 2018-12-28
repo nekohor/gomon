@@ -8,6 +8,7 @@ import (
 
 type Config struct {
     PathConfig *PathConfig
+    // CustomConfig *Setting
     PartTable *PartTable
     FactorTable *FactorTable
     DLLCaller *DLLCaller
@@ -23,6 +24,7 @@ func NewConfig() *Config {
     cfg := new(Config)
 
     cfg.PathConfig = NewPathConfig()
+    // cfg.CustomConfig = NewSetting()
 
     cfg.PartTable = NewPartTable(cfg.PathConfig.ExeDir)
     cfg.FactorTable = NewFactorTable(cfg.PathConfig.ExeDir)

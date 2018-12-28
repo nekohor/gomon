@@ -17,7 +17,7 @@ func NewPathConfig() *PathConfig {
     cfg := new(PathConfig)
 
     cfg.ExeDir = cfg.GetExeDir()
-    cfg.CurDir = os.Args[1]
+    cfg.CurDir = cfg.GetCurDir()
 
     log.Println(cfg.ExeDir)
     log.Println(cfg.CurDir)
@@ -32,6 +32,14 @@ func (cfg *PathConfig) GetExeDir() string {
         log.Fatal(err)
     }
     return exeDir
+}
+
+func (cfg *PathConfig) GetCurDir() string {
+    curDir, err := filepath.Abs(filepath.Dir(os.Args[1]))
+    if err != nil {
+        log.Fatal(err)
+    }
+    return curDir
 }
 
 func (cfg *PathConfig) WalkDir(path string) []string {

@@ -7,7 +7,7 @@ import (
     "unsafe"
     "log"
     "time"
-    // "sync"
+    "sync"
 )
 
 type dataType float32
@@ -60,24 +60,31 @@ func (d *DLLCaller) ReadData(dcaPath, signalName string) (int, []dataType) {
     dataArray := make([]dataType, size)
     if d.pathExists(dcaPath) == true {
 
-        // var wg sync.WaitGroup
-
-        // wg.Add(2)
-        // go func() {
-        callArgDcaPath := uintptr(unsafe.Pointer(StringToINT8Ptr(dcaPath)))
-        callArgSignalName := uintptr(unsafe.Pointer(StringToINT8Ptr(signalName)))
-
-        // wg.Done()
-
-        size_uintptr, _, _ := dllReader.Call(
-        callArgDcaPath, callArgSignalName,
-        uintptr(unsafe.Pointer(&dataArray[0])))
-
-        // wg.Done()
-        size = int(size_uintptr)
-        // }()
-        time.Sleep(100)
+        var wg sync.WaitGroup
+        var callArgDcaPath uintptr
+        var callArgSignalName uintptr
+        var size_uintptr uintptr
+        var dumpArray uintptr
+        wg.Add(1)
+        go func() {
+            callArgDcaPath = uintptr(unsafe.Pointer(StringToINT8Ptr(dcaPath)))
+            callArgSignalName = uintptr(unsafe.Pointer(StringToINT8Ptr(signalName)))
+            dumpArray = uintptr(unsafe.Pointer(&dataArray[0]))
+            time.Sleep(100)
+            wg.Done()
+        }()
+        wg.Wait()
         // wg.Wait()
+        // go func() {
+            size_uintptr, _, _ = dllReader.Call(
+            callArgDcaPath, callArgSignalName, dumpArray)
+            time.Sleep(100)
+            // wg.Done()
+        // }()
+        // wg.Wait()
+        size = int(size_uintptr)
+       
+        
        
     } else {
         log.Println("dcaPath does not exist: ", dcaPath)

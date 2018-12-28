@@ -34,3 +34,7 @@ func (app *Application) GetCoils(resCoilIds []string) map[string]*Coil {
     return coils
 }
 
+
+// func (app *Application) GetFactors() map[string]*Coil {
+    
+// }
