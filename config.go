@@ -7,8 +7,7 @@ import (
 )
 
 type Config struct {
-    PathConfig *PathConfig
-    // CustomConfig *Setting
+    Setting *Setting
     PartTable *PartTable
     FactorTable *FactorTable
     DLLCaller *DLLCaller
@@ -23,16 +22,14 @@ type Config struct {
 func NewConfig() *Config {
     cfg := new(Config)
 
-    cfg.PathConfig = NewPathConfig()
-    // cfg.CustomConfig = NewSetting()
-
-    cfg.PartTable = NewPartTable(cfg.PathConfig.ExeDir)
-    cfg.FactorTable = NewFactorTable(cfg.PathConfig.ExeDir)
-    cfg.DLLCaller = &DLLCaller{cfg.PathConfig.ExeDir + "/ReadDCADLL.dll"}
+    cfg.Setting = NewSetting()
+    cfg.PartTable = NewPartTable(cfg.Setting.ExeDir)
+    cfg.FactorTable = NewFactorTable(cfg.Setting.ExeDir)
+    cfg.DLLCaller = &DLLCaller{cfg.Setting.ExeDir + "/ReadDCADLL.dll"}
 
     return cfg
 }
 
 func (this *Config) ConcatPath(dcaFileName string) string {
-    return this.PathConfig.CurDir + "/" + this.CurCoilId + "/" + dcaFileName + ".dca"
+    return this.Setting.CurDir + "/" + this.CurCoilId + "/" + dcaFileName + ".dca"
 }

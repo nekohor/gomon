@@ -52,11 +52,11 @@ func StringToINT8(s string) []byte {
 
 func StringToINT8Ptr(s string) *byte { return &StringToINT8(s)[0] }
 
-func (d *DLLCaller) ReadData(dcaPath, signalName string) (int, []dataType) {
+func (d *DLLCaller) ReadData(cfg *Config, dcaPath, signalName string) (int, []dataType) {
     mydll := syscall.NewLazyDLL(d.dllPath)
     dllReader := mydll.NewProc("ReadData")
 
-    size := 1500
+    size := cfg.Setting.MaxArray
     dataArray := make([]dataType, size)
     if d.pathExists(dcaPath) == true {
 
@@ -70,7 +70,7 @@ func (d *DLLCaller) ReadData(dcaPath, signalName string) (int, []dataType) {
             callArgDcaPath = uintptr(unsafe.Pointer(StringToINT8Ptr(dcaPath)))
             callArgSignalName = uintptr(unsafe.Pointer(StringToINT8Ptr(signalName)))
             dumpArray = uintptr(unsafe.Pointer(&dataArray[0]))
-            time.Sleep(100)
+            time.Sleep(200)
             wg.Done()
         }()
         wg.Wait()
@@ -78,7 +78,7 @@ func (d *DLLCaller) ReadData(dcaPath, signalName string) (int, []dataType) {
         // go func() {
             size_uintptr, _, _ = dllReader.Call(
             callArgDcaPath, callArgSignalName, dumpArray)
-            time.Sleep(100)
+            time.Sleep(200)
             // wg.Done()
         // }()
         // wg.Wait()
@@ -88,6 +88,7 @@ func (d *DLLCaller) ReadData(dcaPath, signalName string) (int, []dataType) {
        
     } else {
         log.Println("dcaPath does not exist: ", dcaPath)
+        size = -1
     }
     return size, dataArray
 }

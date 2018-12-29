@@ -12,9 +12,9 @@ type Part struct {
 func NewPart(cfg *Config, partName string) *Part {
     pt := new(Part)
 
-    curDir := cfg.PathConfig.CurDir
+    curDir := cfg.Setting.CurDir
     coilId := cfg.CurCoilId
-    line := pt.JudgeLine(coilId)
+    line := cfg.Setting.Line
 
     dcaFileName := cfg.PartTable.GetDcaFileName(line, partName)
     dcaPath := pt.ConcatPath(curDir, coilId, dcaFileName)
@@ -40,9 +40,10 @@ func (p *Part) ConcatPath(curDir, coilId, dcaFileName string) string {
 }
 
 func (this *Part) BuildPartData(cfg *Config, dcaPath, signalName string) {
-    this.data = make([]dataType, 1500)
-    this.size, this.data = cfg.DLLCaller.ReadData(dcaPath, signalName)
+    // this.data = make([]dataType, cfg.Setting.MaxArray)
+    this.size, this.data = cfg.DLLCaller.ReadData(cfg, dcaPath, signalName)
     if this.size == -1 {
-        this.size = 50
+        this.size = 1
     }
+    this.data = this.data[:this.size]
 }

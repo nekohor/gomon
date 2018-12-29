@@ -30,13 +30,13 @@ func NewPartTable(exeDir string) *PartTable {
     return pt
 }
 
-func (pt *PartTable) GetDcaFileName(line int, partName string) string {
-    queryDcaFileName := fmt.Sprintf("part_table.#[line==%d].table.#[part==%s].dcafile", line, partName)
+func (pt *PartTable) GetDcaFileName(line string, partName string) string {
+    queryDcaFileName := fmt.Sprintf("part_table.#[line==%s].table.#[part==%s].dcafile", line, partName)
     return gjson.Get(pt.table, queryDcaFileName).String()
 }
 
-func (pt *PartTable) GetSignalName(line int, partName string) string {
-    querySignalName := fmt.Sprintf("part_table.#[line==%d].table.#[part==%s].signal", line, partName)
+func (pt *PartTable) GetSignalName(line string, partName string) string {
+    querySignalName := fmt.Sprintf("part_table.#[line==%s].table.#[part==%s].signal", line, partName)
     return gjson.Get(pt.table, querySignalName).String()
 }
 

@@ -16,7 +16,7 @@ func main() {
     // coilList := "M18122793Y"
     app := gomon.NewApp()
 
-    exeDir := app.Config.PathConfig.ExeDir
+    exeDir := app.Config.Setting.ExeDir
 
     router := gin.Default()
     router.Use(Cors())
@@ -33,7 +33,7 @@ func main() {
 
     router.GET("/coilIdList", func(c *gin.Context) {
         c.JSON(http.StatusOK, gin.H{
-            "coilIdList": app.Config.PathConfig.CoilIds,
+            "coilIdList": app.Config.Setting.CoilIds,
             "seriesList": app.Config.FactorTable. GetSeriesArray(),
         })
         c.Abort()
@@ -42,7 +42,7 @@ func main() {
     router.GET("/query/:coilId", func(c *gin.Context) {
         coilId := c.Param("coilId")
         if coilId == "default" {
-            coilId = app.Config.PathConfig.CoilIds[0]
+            coilId = app.Config.Setting.CoilIds[0]
         }
         c.JSON(http.StatusOK, gin.H{
             "curCoilId": coilId,

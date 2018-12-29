@@ -25,16 +25,21 @@ func (app *Application) GetCoil(coilId string) *Coil {
 
 func (app *Application) GetCoils(resCoilIds []string) map[string]*Coil {
     coils := make(map[string]*Coil)
-    var coil *Coil
     for _, coilId := range resCoilIds {
-        coil = NewCoil(coilId)
-        coil.PutData(app.Config)
-        coils[coilId] = coil
+        coils[coilId] = app.GetCoil(coilId)
     }
     return coils
 }
 
+func (app *Application) ExportFromSetting() map[string]*Coil {
+    coils := make(map[string]*Coil)
+    for _, date := range app.Config.Setting.DateArray {
+        app.Config.Setting.CurDir = app.Config.Setting.GetCurDirFromDate(date)
+        curCoilIds := app.Config.Setting.GetCoilIdsInCurDir()
+        for _, coilId := range curCoilIds {
+            coils[coilId] = app.GetCoil(coilId)
+        }
+    }
+    return coils
+}
 
-// func (app *Application) GetFactors() map[string]*Coil {
-    
-// }
