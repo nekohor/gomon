@@ -19,7 +19,8 @@ func NewCoil(coilId string) *Coil {
 
 func (this *Coil) PutData(cfg *Config) {
     cfg.CurCoilId = this.CoilId
-    for _, factorName := range  cfg.FactorTable.factorIds {
+    factorArray := cfg.Setting.GetFactorArray(cfg.FactorTable.factorIds)
+    for _, factorName := range factorArray {
         cfg.CurFactorName = factorName
         var l *sync.Mutex
         l = new(sync.Mutex)
@@ -28,3 +29,4 @@ func (this *Coil) PutData(cfg *Config) {
         this.Factors[factorName] = NewFactor(cfg)
     }
 }
+

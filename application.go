@@ -31,7 +31,7 @@ func (app *Application) GetCoils(resCoilIds []string) map[string]*Coil {
     return coils
 }
 
-func (app *Application) ExportFromSetting() map[string]*Coil {
+func (app *Application) ExportAll() map[string]*Coil {
     coils := make(map[string]*Coil)
     for _, date := range app.Config.Setting.DateArray {
         app.Config.Setting.CurDir = app.Config.Setting.GetCurDirFromDate(date)

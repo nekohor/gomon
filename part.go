@@ -1,20 +1,16 @@
 package gomon
 
-
-
-
 type Part struct {
     size int
     data []dataType
 }
-
 
 func NewPart(cfg *Config, partName string) *Part {
     pt := new(Part)
 
     curDir := cfg.Setting.CurDir
     coilId := cfg.CurCoilId
-    line := cfg.Setting.Line
+    line := cfg.Setting.GetMillLine(coilId)
 
     dcaFileName := cfg.PartTable.GetDcaFileName(line, partName)
     dcaPath := pt.ConcatPath(curDir, coilId, dcaFileName)
@@ -23,16 +19,6 @@ func NewPart(cfg *Config, partName string) *Part {
 
     pt.BuildPartData(cfg, dcaPath, signalName)
     return pt
-}
-
-func (this *Part) JudgeLine(coilId string) int {
-    if string(coilId[0]) == "M" {
-        return 1580
-    } else if string(coilId[0]) == "H" {
-        return 2250
-    } else {
-        panic("This coil from wrong line.")
-    }
 }
 
 func (p *Part) ConcatPath(curDir, coilId, dcaFileName string) string {

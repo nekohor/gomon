@@ -10,11 +10,15 @@ import (
     "io/ioutil"
     "time"
     "fmt"
+    "strings"
 )
 
 
 type Setting struct {
     BatchMode bool `yaml:"batch_mode"`
+    SpecificFactorsMode bool `yaml:"specific_factors_mode"`
+    Factors []string `yaml:"factors"`
+
     ExeDir string `yaml:"exe_dir"`
     Line string `yaml:"line"`
 
@@ -48,6 +52,13 @@ func NewSetting() *Setting {
     if err != nil {
         log.Println("mode err", err)
     }
+
+    s.SpecificFactorsMode, err = setup.Section("specific").Key("specific_factors_mode").Bool()
+    if err != nil {
+        log.Println("mode err", err)
+    }
+    s.Factors = strings.Split(setup.Section("path").Key("line").String(), ",")
+
     s.Line = setup.Section("path").Key("line").String()
 
     s.RootDir1 = setup.Section("path").Key("root_dir1").String()
@@ -134,6 +145,23 @@ func (s *Setting) GetDateArray() []string {
     return dateArray
 }
 
+func (s *Setting) GetFactorArray(defaultFactors []string) []string {
+    If(s.SpecificFactorsMode, s.Factors, defaultFactors) 
+    if s.SpecificFactorsMode {
+        return s.Factors
+    } else {
+        return defaultFactors
+    }
+}
+
+func (s *Setting) GetMillLine(coilId string) string {
+    if s.BatchMode {
+        return s.Line
+    } else {
+        return JudgeLine(coilId)
+    }
+}
+
 func GetExeDir() string {
     exeDir, err := filepath.Abs(filepath.Dir(os.Args[0]))
     if err != nil {
@@ -156,3 +184,19 @@ func WalkDir(path string) []string {
     return coilIdList
 }
 
+func If(condition bool, trueVal, falseVal []string) []string {
+    if condition {
+        return trueVal
+    }
+    return falseVal
+}
+
+func JudgeLine(coilId string) string {
+    if string(coilId[0]) == "M" {
+        return "1580"
+    } else if string(coilId[0]) == "H" {
+        return "2250"
+    } else {
+        panic("This coil from wrong line.")
+    }
+}
