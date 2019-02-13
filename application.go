@@ -3,7 +3,7 @@ package gomon
 import (
     // "os"
     // "path/filepath"
-    // "log"
+    "log"
 )
 
 
@@ -31,15 +31,29 @@ func (app *Application) GetCoils(resCoilIds []string) map[string]*Coil {
     return coils
 }
 
-func (app *Application) ExportAll() map[string]*Coil {
-    coils := make(map[string]*Coil)
+func (app *Application) ExportDaily() {
+    var coils map[string]*Coil
     for _, date := range app.Config.Setting.DateArray {
+
         app.Config.Setting.CurDir = app.Config.Setting.GetCurDirFromDate(date)
         curCoilIds := app.Config.Setting.GetCoilIdsInCurDir()
-        for _, coilId := range curCoilIds {
-            coils[coilId] = app.GetCoil(coilId)
-        }
+
+        coils = app.GetCoils(curCoilIds)
+        // coils = make(map[string]*Coil)
+        // for _, coilId := range curCoilIds {
+        //     coils[coilId] = app.GetCoil(coilId)
+        // }
+
+        saveFilePath := app.Config.Setting.GetSaveFilePath(date)
+        log.Println(saveFilePath)
+        SaveJson(coils, saveFilePath)
     }
-    return coils
 }
 
+func (app *Application) ExportDefault() {
+    var coils map[string]*Coil
+    coils = app.GetCoils(app.Config.Setting.CoilIds)
+    saveFilePath := app.Config.Setting.GetDefaultFilePath()
+    log.Println(saveFilePath)
+    SaveJson(coils, saveFilePath)
+}

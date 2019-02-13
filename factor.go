@@ -5,7 +5,7 @@ import (
 )
 type Factor struct {
     FactorName string `json:"factorName"`
-    FactorNameZhCn string `json:"factorNameZhCn"`
+    FactorNameZhCn string `json:"-"`
     Data []dataType `json:"data"`
 }
 
@@ -33,6 +33,8 @@ func (this *Factor) BuildData(cfg *Config) {
             // FactorName as partName
             this.BuildFactorData1(cfg,cfg.CurFactorName)
     }
+    log.Println(cfg.CurFactorName)
+    log.Println(this.Data[:(len(this.Data) / 10)])
 }
 
 func (this *Factor) BuildFactorData0() {
@@ -41,31 +43,30 @@ func (this *Factor) BuildFactorData0() {
 
 func (this *Factor) BuildFactorData1(cfg *Config, partName string) {
     p := NewPart(cfg, partName)
-    log.Println(p)
     this.Data = make([]dataType, p.size)
     for i := 0; i < p.size; i++ {
         this.Data[i] = p.data[i]
     }
 }
 
-func (t *Factor) BuildFactorData2(cfg *Config, os string, ds string) {
+func (this *Factor) BuildFactorData2(cfg *Config, os string, ds string) {
     p_os := NewPart(cfg, os)
     p_ds := NewPart(cfg, ds)
 
-    t.Data = make([]dataType, p_os.size)
+    this.Data = make([]dataType, p_os.size)
     for i := 0; i < p_os.size; i++ {
-        t.Data[i] = p_os.data[i] - p_ds.data[i]
+        this.Data[i] = p_os.data[i] - p_ds.data[i]
     }
 }
 
-func (t *Factor) BuildFactorData3(cfg *Config, os, ct, ds string) {
+func (this *Factor) BuildFactorData3(cfg *Config, os, ct, ds string) {
     p_os := NewPart(cfg, os)
     p_ct := NewPart(cfg, ct)
     p_ds := NewPart(cfg, ds)
 
-    t.Data = make([]dataType, p_ct.size)
+    this.Data = make([]dataType, p_ct.size)
     for i := 0; i < p_os.size; i++ {
-        t.Data[i] = (p_os.data[i] + p_ds.data[i]) / 2 - p_ct.data[i]
+        this.Data[i] = (p_os.data[i] + p_ds.data[i]) / 2 - p_ct.data[i]
     }
 }
 

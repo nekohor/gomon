@@ -1,5 +1,11 @@
 package gomon
 
+
+
+import (
+    "log"
+)
+
 type Part struct {
     size int
     data []dataType
@@ -28,6 +34,7 @@ func (p *Part) ConcatPath(curDir, coilId, dcaFileName string) string {
 func (this *Part) BuildPartData(cfg *Config, dcaPath, signalName string) {
     // this.data = make([]dataType, cfg.Setting.MaxArray)
     this.size, this.data = cfg.DLLCaller.ReadData(cfg, dcaPath, signalName)
+    log.Println(this.size)
     if this.size == -1 {
         this.size = 1
     }

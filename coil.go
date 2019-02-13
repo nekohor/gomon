@@ -21,11 +21,13 @@ func (this *Coil) PutData(cfg *Config) {
     cfg.CurCoilId = this.CoilId
     factorArray := cfg.Setting.GetFactorArray(cfg.FactorTable.factorIds)
     for _, factorName := range factorArray {
-        cfg.CurFactorName = factorName
+        
         var l *sync.Mutex
         l = new(sync.Mutex)
         l.Lock()
         defer l.Unlock()
+
+        cfg.CurFactorName = factorName
         this.Factors[factorName] = NewFactor(cfg)
     }
 }

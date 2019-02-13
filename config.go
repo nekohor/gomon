@@ -23,8 +23,8 @@ func NewConfig() *Config {
     cfg := new(Config)
 
     cfg.Setting = NewSetting()
-    cfg.PartTable = NewPartTable(cfg.Setting.ExeDir)
-    cfg.FactorTable = NewFactorTable(cfg.Setting.ExeDir)
+    cfg.PartTable = NewPartTable(cfg.Setting.TablesDir)
+    cfg.FactorTable = NewFactorTable(cfg.Setting.TablesDir)
     cfg.DLLCaller = &DLLCaller{cfg.Setting.ExeDir + "/ReadDCADLL.dll"}
 
     return cfg

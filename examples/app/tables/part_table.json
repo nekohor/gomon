@@ -256,7 +256,7 @@
                 {
                     "part": "fdt",
                     "dcafile": "FDT_POND",
-                    "signal": "TN\\L2_FA_FDT2TEMP"
+                    "signal": "TN\\L2_FA_FDT1TEMP"
                 },
                 {
                     "part": "fdt_calc_length",

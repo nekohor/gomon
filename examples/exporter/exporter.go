@@ -2,19 +2,14 @@ package main
 
 import (
     "github.com/nekohor/gomon"
-    "encoding/json"
-    "log"
-    // "fmt"
 )
 
 
 func main() {
     app := gomon.NewApp()
-    coils := app.ExportAll()
-    b, err := json.Marshal(coils)
-    if err != nil {
-        log.Println("json err:", err)
+    if app.Config.Setting.BatchMode {
+        app.ExportDaily()
+    } else {
+        app.ExportDefault()
     }
-    // log.Println(b)
-    gomon.SaveFile(app.Config.Setting.ResultDir + "/reuslt.json", b)
 }
