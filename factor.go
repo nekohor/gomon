@@ -1,72 +1,99 @@
 package gomon
 
 import (
-    "log"
+	"log"
 )
+
 type Factor struct {
-    FactorName string `json:"factorName"`
-    FactorNameZhCn string `json:"-"`
-    Data []dataType `json:"data"`
+	FactorName string     `json:"factorName"`
+	Data       []dataType `json:"data"`
 }
 
-func NewFactor(cfg *Config) *Factor {
-    factor := new(Factor)
-    factor.FactorName =  cfg.CurFactorName
-    // factor.FactorNameZhCn = cfg.FactorTable.GetFactorNameZhCn(cfg.CurFactorName)
-    factor.BuildData(cfg)
-    return factor
+func NewFactor(ctx *Context, coilId string, factorName string) *Factor {
+	factor := new(Factor)
+	factor.FactorName = factorName
+	// factor.FactorNameZhCn = ctx.FactorTable.GetFactorNameZhCn(ctx.CurFactorName)
+	factor.Data = factor.GetData(ctx, coilId, factorName)
+	factor.PrintLog(ctx)
+	return factor
 }
 
-func (this *Factor) BuildData(cfg *Config) {
-    switch cfg.CurFactorName {
-        case "leveling1", "leveling2", "leveling3", "leveling4", "leveling5", "leveling6", "leveling7":
-            std_idx := len(cfg.CurFactorName)
-            std := string(cfg.CurFactorName[std_idx - 1])
-            this.BuildFactorData2(cfg,"os_gap" + std,"ds_gap" + std)
-        case "asym_flt":
-            this.BuildFactorData2(cfg,"flt_ro1","flt_ro5")
-        case "sym_flt":
-            this.BuildFactorData3(cfg,"flt_ro1","flt_ro3","flt_ro5")
-        case "looper_angle7":
-            this.BuildFactorData0()
-        default:
-            // FactorName as partName
-            this.BuildFactorData1(cfg,cfg.CurFactorName)
-    }
-    log.Println(cfg.CurFactorName)
-    log.Println(this.Data[:(len(this.Data) / 10)])
+func (f *Factor) PrintLog(ctx *Context) {
+	log.Println("")
+
+	log.Println(f.FactorName)
+	log.Println(len(f.Data))
+	log.Println(f.Data[:(len(f.Data) / 10)])
+
+	log.Println("")
 }
 
-func (this *Factor) BuildFactorData0() {
-    this.Data = make([]dataType, 1)
+func (f *Factor) GetData(ctx *Context, coilId string, factorName string) []dataType {
+	curData := make([]dataType, 3)
+	switch factorName {
+	case "leveling1", "leveling2", "leveling3", "leveling4", "leveling5", "leveling6", "leveling7":
+		stdIdx := len(factorName)
+		std := string(factorName[stdIdx-1])
+		curData = f.GetFactorData2(ctx, coilId, "os_gap"+std, "ds_gap"+std)
+	case "asym_flt":
+		curData = f.GetFactorData2(ctx, coilId, "flt_ro1", "flt_ro5")
+	case "sym_flt":
+		curData = f.GetFactorData3Reverse(ctx, coilId, "flt_ro1", "flt_ro3", "flt_ro5")
+	case "looper_angle7":
+		curData = f.GetFactorData0()
+	default:
+		// FactorName as partName
+		curData = f.GetFactorData1(ctx, coilId, factorName)
+	}
+	return curData
 }
 
-func (this *Factor) BuildFactorData1(cfg *Config, partName string) {
-    p := NewPart(cfg, partName)
-    this.Data = make([]dataType, p.size)
-    for i := 0; i < p.size; i++ {
-        this.Data[i] = p.data[i]
-    }
+func (f *Factor) GetFactorData0() []dataType {
+	factorData := make([]dataType, 1)
+	return factorData
 }
 
-func (this *Factor) BuildFactorData2(cfg *Config, os string, ds string) {
-    p_os := NewPart(cfg, os)
-    p_ds := NewPart(cfg, ds)
-
-    this.Data = make([]dataType, p_os.size)
-    for i := 0; i < p_os.size; i++ {
-        this.Data[i] = p_os.data[i] - p_ds.data[i]
-    }
+func (f *Factor) GetFactorData1(ctx *Context, coilId string, single string) []dataType {
+	part := NewPart(ctx, coilId, single)
+	factorData := make([]dataType, part.size)
+	for i := 0; i < part.size; i++ {
+		factorData[i] = part.data[i]
+	}
+	return factorData
 }
 
-func (this *Factor) BuildFactorData3(cfg *Config, os, ct, ds string) {
-    p_os := NewPart(cfg, os)
-    p_ct := NewPart(cfg, ct)
-    p_ds := NewPart(cfg, ds)
+func (f *Factor) GetFactorData2(ctx *Context, coilId string, os string, ds string) []dataType {
+	partOS := NewPart(ctx, coilId, os)
+	partDS := NewPart(ctx, coilId, ds)
 
-    this.Data = make([]dataType, p_ct.size)
-    for i := 0; i < p_os.size; i++ {
-        this.Data[i] = (p_os.data[i] + p_ds.data[i]) / 2 - p_ct.data[i]
-    }
+	factorData := make([]dataType, partOS.size)
+	for i := 0; i < partOS.size; i++ {
+		factorData[i] = partOS.data[i] - partDS.data[i]
+	}
+	return factorData
 }
 
+func (f *Factor) GetFactorData3(ctx *Context, coilId, os, ct, ds string) []dataType {
+	partOS := NewPart(ctx, coilId, os)
+	partCT := NewPart(ctx, coilId, ct)
+	partDS := NewPart(ctx, coilId, ds)
+
+	factorData := make([]dataType, partCT.size)
+	for i := 0; i < partOS.size; i++ {
+		factorData[i] = partCT.data[i] - (partOS.data[i]+partDS.data[i])/2
+	}
+	return factorData
+
+}
+
+func (f *Factor) GetFactorData3Reverse(ctx *Context, coilId, os, ct, ds string) []dataType {
+	partOS := NewPart(ctx, coilId, os)
+	partCT := NewPart(ctx, coilId, ct)
+	partDS := NewPart(ctx, coilId, ds)
+
+	factorData := make([]dataType, partCT.size)
+	for i := 0; i < partOS.size; i++ {
+		factorData[i] = (partOS.data[i]+partDS.data[i])/2 - partCT.data[i]
+	}
+	return factorData
+}

@@ -1,0 +1,124 @@
+{
+    "factorTable": [
+        {
+            "seriesName": "temprature_series",
+            "taskList": [
+                "r2dt",
+                "fet",
+                "fdt",
+                "ct",
+                "speed7"
+            ]
+        },
+        {
+            "seriesName": "shape_series",
+            "taskList": [
+                "thick_clg",
+                "crown40",
+                "wedge40",
+                "sym_flt",
+                "asym_flt",
+                "r2_center_ofs",
+                "fm_center_ofs"
+            ]
+        },
+        {
+            "seriesName": "calc_length_series",
+            "taskList": [
+                "clg_calc_length",
+                "mfg_calc_length",
+                "calc_length1",
+                "calc_length2",
+                "calc_length3",
+                "calc_length4",
+                "calc_length5",
+                "calc_length6",
+                "calc_length7",
+                "fm_calc_length",
+                "flt_calc_length",
+                "r2dt_calc_length",
+                "r2dw_calc_length",
+                "ct_calc_length",
+                "fet_calc_length",
+                "fdt_calc_length"
+            ]
+        },
+        {
+            "seriesName": "fm_stand_series1",
+            "taskList": [
+                "looper_angle1",
+                "diff_rolling_force1",
+                "ct_gap1",
+                "total_rolling_force1",
+                "os_bend_force1",
+                "leveling1"
+            ]
+        },
+        {
+            "seriesName": "fm_stand_series2",
+            "taskList": [
+                "looper_angle2",
+                "diff_rolling_force2",
+                "ct_gap2",
+                "total_rolling_force2",
+                "os_bend_force2",
+                "leveling2"
+            ]
+        },
+        {
+            "seriesName": "fm_stand_series3",
+            "taskList": [
+                "looper_angle3",
+                "diff_rolling_force3",
+                "ct_gap3",
+                "total_rolling_force3",
+                "os_bend_force3",
+                "leveling3"
+            ]
+        },
+        {
+            "seriesName": "fm_stand_series4",
+            "taskList": [
+                "looper_angle4",
+                "diff_rolling_force4",
+                "ct_gap4",
+                "total_rolling_force4",
+                "os_bend_force4",
+                "leveling4"
+            ]
+        },
+        {
+            "seriesName": "fm_stand_series5",
+            "taskList": [
+                "looper_angle5",
+                "diff_rolling_force5",
+                "ct_gap5",
+                "total_rolling_force5",
+                "os_bend_force5",
+                "leveling5"
+            ]
+        },
+        {
+            "seriesName": "fm_stand_series6",
+            "taskList": [
+                "looper_angle6",
+                "diff_rolling_force6",
+                "ct_gap6",
+                "total_rolling_force6",
+                "os_bend_force6",
+                "leveling6"
+            ]
+        },
+        {
+            "seriesName": "fm_stand_series7",
+            "taskList": [
+                "looper_angle7",
+                "diff_rolling_force7",
+                "ct_gap7",
+                "total_rolling_force7",
+                "os_bend_force7",
+                "leveling7"
+            ]
+        }
+    ]
+}

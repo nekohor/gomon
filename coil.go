@@ -1,34 +1,19 @@
 package gomon
 
-import (
-    "sync"
-)
-
 type Coil struct {
-    CoilId string `json:"coilId"`
-    Factors map[string]*Factor `json:"factors"`
+	CoilId  string             `json:"coilId"`
+	Factors map[string]*Factor `json:"factors"`
 }
 
+func NewCoil(ctx *Context, coilId string) *Coil {
+	c := new(Coil)
+	c.CoilId = coilId
 
-func NewCoil(coilId string) *Coil {
-    coil := new(Coil)
-    coil.CoilId = coilId
-    coil.Factors = make(map[string]*Factor)
-    return coil 
-} 
+	c.Factors = make(map[string]*Factor)
+	factorNames := ctx.FactorConf.GetFactorNames()
 
-func (this *Coil) PutData(cfg *Config) {
-    cfg.CurCoilId = this.CoilId
-    factorArray := cfg.Setting.GetFactorArray(cfg.FactorTable.factorIds)
-    for _, factorName := range factorArray {
-        
-        var l *sync.Mutex
-        l = new(sync.Mutex)
-        l.Lock()
-        defer l.Unlock()
-
-        cfg.CurFactorName = factorName
-        this.Factors[factorName] = NewFactor(cfg)
-    }
+	for _, factorName := range factorNames {
+		c.Factors[factorName] = NewFactor(ctx, coilId, factorName)
+	}
+	return c
 }
-
