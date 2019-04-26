@@ -114,13 +114,13 @@ func (s *Setting) GetCurDirInBatchMode(date string) string {
 	return fmt.Sprintf("%s/%s/%s", s.GetRootDir(), date[:6], date)
 }
 
-func (s *Setting) InitCurDir() string {
-	if s.IsBatchMode() {
-		return s.GetCurDirInBatchMode(s.StartDate)
-	} else {
-		return os.Args[1]
-	}
-}
+//func (s *Setting) InitCurDir() string {
+//	if s.IsBatchMode() {
+//		return s.GetCurDirInBatchMode(s.StartDate)
+//	} else {
+//		return os.Args[1]
+//	}
+//}
 
 func (s *Setting) GetResultFilePathInBatchMode(curDate string) string {
 

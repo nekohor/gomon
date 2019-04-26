@@ -21,13 +21,9 @@ type Context struct {
 
 func NewContext() *Context {
 	this := new(Context)
-
 	this.Setting = NewSetting()
 	this.PartConf = NewPartConfig(this.Setting)
 	this.FactorConf = NewFactorConfig(this.Setting)
 	this.Reader = NewReader()
-
-	this.CurDir = this.Setting.InitCurDir()
-	this.CoilIds = WalkDir(this.CurDir)
 	return this
 }

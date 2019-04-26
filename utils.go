@@ -8,6 +8,7 @@ import (
 	"os"
 	"path/filepath"
 
+	"github.com/tidwall/gjson"
 	"golang.org/x/text/encoding/simplifiedchinese"
 	"golang.org/x/text/transform"
 )
@@ -124,4 +125,19 @@ func GetExeDir() string {
 
 func GetComponentsDir() string {
 	return GetExeDir() + "/" + "Components"
+}
+
+func GJsonArrayToStringArray(gJsonArr []gjson.Result) []string {
+	strArr := make([]string, len(gJsonArr))
+	for i, v := range gJsonArr {
+		strArr[i] = v.String()
+	}
+	return strArr
+}
+
+func CheckError(err error) {
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Fatal error: %s", err.Error())
+		os.Exit(1)
+	}
 }

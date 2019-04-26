@@ -4,6 +4,7 @@ import (
 	// "os"
 	// "path/filepath"
 	"log"
+	"os"
 )
 
 type GoMonitor struct {
@@ -16,8 +17,25 @@ func NewGoMonitor() *GoMonitor {
 	return g
 }
 
+func (g *GoMonitor) RespondCoils(req string) map[string]*Coil {
+	sockConf := NewSocketConfig(req)
+
+	g.Context.CurDir = sockConf.GetDcaFileDir()
+	coilId := sockConf.GetCoilId()
+	factorNames := sockConf.GetFactors()
+	log.Print(g.Context.CurDir)
+	log.Print(coilId)
+	log.Print(factorNames)
+	coil := NewCoil(g.Context, coilId, factorNames)
+
+	coils := make(map[string]*Coil)
+	coils[coilId] = coil
+	return coils
+}
+
 func (g *GoMonitor) GetCoil(coilId string) *Coil {
-	coil := NewCoil(g.Context, coilId)
+	factorNames := g.Context.FactorConf.GetFactorNames()
+	coil := NewCoil(g.Context, coilId, factorNames)
 	return coil
 }
 
@@ -46,7 +64,11 @@ func (g *GoMonitor) ExportBatch() {
 
 func (g *GoMonitor) ExportDefault() {
 	var coils map[string]*Coil
-	coils = g.GetCoils(g.Context.CoilIds)
+
+	g.Context.CurDir = os.Args[1]
+	curCoilIds := WalkDir(g.Context.CurDir)
+
+	coils = g.GetCoils(curCoilIds)
 	saveFilePath := g.Context.Setting.GetResultFilePath()
 	log.Println(saveFilePath)
 	SaveJson(coils, saveFilePath)

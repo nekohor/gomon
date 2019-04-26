@@ -55,11 +55,3 @@ func (f *FactorConfig) GetAllFactorNames() []string {
 	}
 	return allFactorIds
 }
-
-func GJsonArrayToStringArray(gJsonArr []gjson.Result) []string {
-	strArr := make([]string, len(gJsonArr))
-	for i, v := range gJsonArr {
-		strArr[i] = v.String()
-	}
-	return strArr
-}
