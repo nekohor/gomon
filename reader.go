@@ -10,6 +10,7 @@ import (
 	//"os"
 	"syscall"
 	"unsafe"
+
 	// "time"
 	"sync"
 )
@@ -22,8 +23,9 @@ type Reader struct {
 
 func NewReader() *Reader {
 	reader := new(Reader)
-	handle, err := syscall.LoadLibrary(GetComponentsDir() + "/ReadDCADLL.dll")
+	handle, err := syscall.LoadLibrary("ReadDCADLL.dll")
 	if err != nil {
+		log.Println(err)
 		panic("err in LoadLibrary")
 	}
 	//defer syscall.FreeLibrary(handle)
@@ -72,8 +74,18 @@ func (reader *Reader) ReadData(ctx *Context, dcaPath, signalName string) (int, [
 		//callArgDcaPath := uintptr(unsafe.Pointer(StringToINT8Ptr(dcaPath)))
 		//callArgSignalName := uintptr(unsafe.Pointer(StringToINT8Ptr(signalName)))
 
-		CgoDcaPath := C.CString(dcaPath)
-		CgoSignalName := C.CString(signalName)
+		gbkDcaPath, err := Utf8ToGbk([]byte(dcaPath))
+		if err != nil {
+			log.Println(err)
+		}
+
+		gbkSignalName, err := Utf8ToGbk([]byte(signalName))
+		if err != nil {
+			log.Println(err)
+		}
+
+		CgoDcaPath := C.CString(string(gbkDcaPath))
+		CgoSignalName := C.CString(string(gbkSignalName))
 		defer C.free(unsafe.Pointer(CgoDcaPath))
 		defer C.free(unsafe.Pointer(CgoSignalName))
 

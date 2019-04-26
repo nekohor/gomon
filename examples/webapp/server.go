@@ -13,14 +13,12 @@ func main() {
 
 	// curDir := `C:\Users\Crystal\go\src\github.com\nekohor\gomonitor\app\sample`
 	// coilList := "M18122793Y"
-	app := gomon.NewGmon()
-
-	exeDir := app.Config.Setting.ExeDir
+	gm := gomon.NewGoMonitor()
 
 	router := gin.Default()
 	router.Use(Cors())
-	router.LoadHTMLGlob(exeDir + "/templates/*")
-	router.Static("/static", exeDir+"/static")
+	router.LoadHTMLGlob(gomon.GetExeDir() + "/templates/*")
+	router.Static("/static", gomon.GetExeDir()+"/static")
 
 	// router
 	router.GET("/", func(c *gin.Context) {
@@ -30,32 +28,32 @@ func main() {
 		c.Abort()
 	})
 
-	router.GET("/coilIdList", func(c *gin.Context) {
+	router.GET("/api/curCoilIds", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
-			"coilIdList": app.Config.Setting.CoilIds,
-			"seriesList": app.Config.FactorTable.GetSeriesArray(),
+			"coilIdList": gm.Context.CoilIds,
+			"seriesList": gm.Context.FactorConf.GetSeriesArray(),
 		})
 		c.Abort()
 	})
 
-	router.GET("/query/:coilId", func(c *gin.Context) {
+	router.GET("/api/coil/:coilId", func(c *gin.Context) {
 		coilId := c.Param("coilId")
 		if coilId == "default" {
-			coilId = app.Config.Setting.CoilIds[0]
+			coilId = gm.Context.CoilIds[0]
 		}
 		c.JSON(http.StatusOK, gin.H{
 			"curCoilId": coilId,
-			"coil":      app.GetCoil(coilId),
+			"coil":      gm.GetCoil(coilId),
 		})
 		c.Abort()
 	})
 
-	router.GET("/queryAll/:coilIdMessage", func(c *gin.Context) {
+	router.GET("/api/coils/:coilIdMessage", func(c *gin.Context) {
 		coilIdMessage := c.Param("coilIdMessage")
 		coilIdList := strings.Split(coilIdMessage, "&")
 		c.JSON(http.StatusOK, gin.H{
 			"coilIdList": coilIdList,
-			"coils":      app.GetCoils,
+			"coils":      gm.GetCoils,
 		})
 		c.Abort()
 	})

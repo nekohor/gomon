@@ -9,7 +9,7 @@ func NewPart(ctx *Context, coilId string, partName string) *Part {
 	pt := new(Part)
 
 	curDir := ctx.CurDir
-	line := GetMillLine(coilId)
+	line := GetMillLine(ctx, coilId)
 	dcaFileName := ctx.PartConf.GetDcaFileName(line, partName)
 	dcaPath := pt.ConcatPath(curDir, coilId, dcaFileName)
 	signalName := ctx.PartConf.GetSignalName(line, partName)

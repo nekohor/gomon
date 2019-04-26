@@ -1,16 +1,64 @@
 package gomon
 
 import (
+	"bytes"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"os"
 	"path/filepath"
+
+	"golang.org/x/text/encoding/simplifiedchinese"
+	"golang.org/x/text/transform"
 )
 
+type Charset string
+
+const (
+	UTF8    = Charset("UTF-8")
+	GB18030 = Charset("GB18030")
+)
+
+func ConvertByte2String(byte []byte, charset Charset) string {
+
+	var str string
+	switch charset {
+	case GB18030:
+		var decodeBytes, _ = simplifiedchinese.GB18030.NewDecoder().Bytes(byte)
+		str = string(decodeBytes)
+	case UTF8:
+		fallthrough
+	default:
+		str = string(byte)
+	}
+
+	return str
+}
+
+func GbkToUtf8(s []byte) ([]byte, error) {
+	reader := transform.NewReader(bytes.NewReader(s), simplifiedchinese.GBK.NewDecoder())
+	d, e := ioutil.ReadAll(reader)
+	if e != nil {
+		return nil, e
+	}
+	return d, nil
+}
+
+func Utf8ToGbk(s []byte) ([]byte, error) {
+	reader := transform.NewReader(bytes.NewReader(s), simplifiedchinese.GBK.NewEncoder())
+	d, e := ioutil.ReadAll(reader)
+	if e != nil {
+		return nil, e
+	}
+	return d, nil
+}
+
 func WalkDir(path string) []string {
+	fmt.Println(path)
 	rd, err := ioutil.ReadDir(path)
 	if err != nil {
-		log.Println("theDirPath cannot walk")
+		log.Println(err)
+		log.Println("theDirPath cannot walk in utils.go:57")
 		return []string{}
 	}
 	coilIdList := []string{}
@@ -29,11 +77,15 @@ func If(condition bool, trueVal, falseVal []string) []string {
 	return falseVal
 }
 
-func GetMillLine(coilId string) string {
+func GetMillLine(ctx *Context, coilId string) string {
 	if string(coilId[0]) == "M" {
 		return "1580"
 	} else if string(coilId[0]) == "H" {
 		return "2250"
+	} else if string(coilId[0]) == "G" {
+		return ctx.Setting.Line
+	} else if string(coilId[0]) == "C" {
+		return ctx.Setting.Line
 	} else {
 		log.Println("In JudgeLine Else Logic")
 		log.Println(coilId)

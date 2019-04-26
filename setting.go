@@ -3,6 +3,7 @@ package gomon
 import (
 	"log"
 	"os"
+
 	//"path/filepath"
 	// "gopkg.in/json.v2"
 	"github.com/go-ini/ini"
@@ -15,8 +16,7 @@ import (
 type Setting struct {
 	IniFile *ini.File
 
-	DataMaxNum  int
-	MaxPrintNum int
+	DataMaxNum int
 
 	SpecificFactorsMode bool
 	SpecificFactors     []string
