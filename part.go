@@ -15,6 +15,7 @@ func NewPart(ctx *Context, coilId string, partName string) *Part {
 	signalName := ctx.PartConf.GetSignalName(line, partName)
 
 	pt.size, pt.data = ctx.Reader.ReadData(ctx, dcaPath, signalName)
+
 	return pt
 }
 

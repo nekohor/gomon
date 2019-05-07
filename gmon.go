@@ -20,16 +20,17 @@ func NewGoMonitor() *GoMonitor {
 func (g *GoMonitor) RespondCoils(req string) map[string]*Coil {
 	sockConf := NewSocketConfig(req)
 
-	g.Context.CurDir = sockConf.GetDcaFileDir()
-	coilId := sockConf.GetCoilId()
-	factorNames := sockConf.GetFactors()
-	log.Print(g.Context.CurDir)
-	log.Print(coilId)
-	log.Print(factorNames)
-	coil := NewCoil(g.Context, coilId, factorNames)
-
 	coils := make(map[string]*Coil)
-	coils[coilId] = coil
+
+	for _, coilId := range sockConf.GetCoilIds() {
+		g.Context.CurDir = sockConf.GetCurDir(coilId)
+		factorNames := sockConf.GetFactors(coilId)
+		log.Print(g.Context.CurDir)
+		log.Print(coilId)
+		log.Print(factorNames)
+		coils[coilId] = NewCoil(g.Context, coilId, factorNames)
+	}
+
 	return coils
 }
 

@@ -6,29 +6,37 @@ import (
 )
 
 type SocketConfig struct {
-	Setting *Setting
-	Request string
+
+	ReqString string
+
+	//Setting *Setting
+	CoilIds []string
+	Requests map[string]*Request
+
 }
 
 func NewSocketConfig(req string) *SocketConfig {
 	conf := new(SocketConfig)
-	conf.Request = req
+	conf.ReqString = req
+
 	return conf
 }
 
-func (s *SocketConfig) GetCoilId() string {
-	query := "coilId"
-	return gjson.Get(s.Request, query).String()
+func (s *SocketConfig) GetCoilIds() []string {
+	query := "requests.#.coilId"
+	gjsonArray := gjson.Get(s.ReqString, query).Array()
+	stringArray := GJsonArrayToStringArray(gjsonArray)
+	return stringArray
 }
 
-func (s *SocketConfig) GetDcaFileDir() string {
-	query := "curDir"
-	return gjson.Get(s.Request, query).String()
+func (s *SocketConfig) GetCurDir(coilId string) string {
+	query := fmt.Sprintf("requests.#[coilId==\"%s\"].curDir", coilId)
+	return gjson.Get(s.ReqString, query).String()
 }
 
-func (s *SocketConfig) GetFactors() []string {
-	query := fmt.Sprintf("factors")
-	gjsonArray := gjson.Get(s.Request, query).Array()
+func (s *SocketConfig) GetFactors(coilId string) []string {
+	query := fmt.Sprintf("requests.#[coilId==\"%s\"].factors", coilId)
+	gjsonArray := gjson.Get(s.ReqString, query).Array()
 	stringArray := GJsonArrayToStringArray(gjsonArray)
 	return stringArray
 }

@@ -7,6 +7,8 @@ package gomon
 import "C"
 import (
 	"log"
+	"math"
+
 	//"os"
 	"syscall"
 	"unsafe"
@@ -109,11 +111,25 @@ func (reader *Reader) ReadData(ctx *Context, dcaPath, signalName string) (int, [
 		log.Println("dcaPath does not exist: ", dcaPath)
 		size = -2
 	}
+
 	log.Println("actual return size")
 	log.Println(size)
+
 	if -1 == size || -2 == size {
 		size = 1
 		log.Println("[Warning] wrong DCA path or signal name in DLL function")
 	}
-	return size, dataArray
+
+	buffArray := make([]dataType, len(dataArray))
+
+	for i := 0; i < len(dataArray); i++ {
+
+		if math.IsNaN(float64(dataArray[i])) {
+			buffArray[i] = 0
+		} else {
+			buffArray[i] = dataArray[i]
+		}
+	}
+
+	return size, buffArray
 }

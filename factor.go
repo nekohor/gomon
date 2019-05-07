@@ -41,6 +41,10 @@ func (f *Factor) GetData(ctx *Context, coilId string, factorName string) []dataT
 		curData = f.GetFactorData3Reverse(ctx, coilId, "flt_ro1", "flt_ro3", "flt_ro5")
 	case "looper_angle7":
 		curData = f.GetFactorData0()
+	case "c25_minus_c40":
+		curData = f.GetFactorData2(ctx, coilId, "crown25", "crown40")
+	case "c40_minus_c100":
+		curData = f.GetFactorData2(ctx, coilId, "crown40", "crown100")
 	default:
 		// FactorName as partName
 		curData = f.GetFactorData1(ctx, coilId, factorName)
