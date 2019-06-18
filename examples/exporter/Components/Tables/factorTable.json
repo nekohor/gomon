@@ -1,8 +1,8 @@
 {
     "factorTable": [
         {
-            "seriesName": "temprature_series",
-            "taskList": [
+            "seriesName": "temperature_series",
+            "factorList": [
                 "r2dt",
                 "fet",
                 "fdt",
@@ -12,7 +12,7 @@
         },
         {
             "seriesName": "shape_series",
-            "taskList": [
+            "factorList": [
                 "thick_clg",
                 "crown40",
                 "wedge40",
@@ -24,7 +24,7 @@
         },
         {
             "seriesName": "calc_length_series",
-            "taskList": [
+            "factorList": [
                 "clg_calc_length",
                 "mfg_calc_length",
                 "calc_length1",
@@ -45,7 +45,7 @@
         },
         {
             "seriesName": "fm_stand_series1",
-            "taskList": [
+            "factorList": [
                 "looper_angle1",
                 "diff_rolling_force1",
                 "ct_gap1",
@@ -56,7 +56,7 @@
         },
         {
             "seriesName": "fm_stand_series2",
-            "taskList": [
+            "factorList": [
                 "looper_angle2",
                 "diff_rolling_force2",
                 "ct_gap2",
@@ -67,7 +67,7 @@
         },
         {
             "seriesName": "fm_stand_series3",
-            "taskList": [
+            "factorList": [
                 "looper_angle3",
                 "diff_rolling_force3",
                 "ct_gap3",
@@ -78,7 +78,7 @@
         },
         {
             "seriesName": "fm_stand_series4",
-            "taskList": [
+            "factorList": [
                 "looper_angle4",
                 "diff_rolling_force4",
                 "ct_gap4",
@@ -89,7 +89,7 @@
         },
         {
             "seriesName": "fm_stand_series5",
-            "taskList": [
+            "factorList": [
                 "looper_angle5",
                 "diff_rolling_force5",
                 "ct_gap5",
@@ -100,7 +100,7 @@
         },
         {
             "seriesName": "fm_stand_series6",
-            "taskList": [
+            "factorList": [
                 "looper_angle6",
                 "diff_rolling_force6",
                 "ct_gap6",
@@ -111,7 +111,7 @@
         },
         {
             "seriesName": "fm_stand_series7",
-            "taskList": [
+            "factorList": [
                 "looper_angle7",
                 "diff_rolling_force7",
                 "ct_gap7",

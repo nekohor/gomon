@@ -9,7 +9,6 @@ import (
 	"github.com/go-ini/ini"
 
 	"fmt"
-	"strings"
 	"time"
 )
 
@@ -19,7 +18,7 @@ type Setting struct {
 	DataMaxNum int
 
 	SpecificFactorsMode bool
-	SpecificFactors     []string
+	//SpecificFactors     []string
 
 	Line string
 
@@ -47,7 +46,7 @@ func NewSetting() *Setting {
 	if err != nil {
 		log.Println("Parse SpecificFactorsMode Error", err)
 	}
-	s.SpecificFactors = strings.Split(s.IniFile.Section("Specific").Key("SpecificFactors").String(), ",")
+	//s.SpecificFactors = strings.Split(s.IniFile.Section("Specific").Key("SpecificFactors").String(), ",")
 
 	if s.IsBatchMode() {
 		s.Line = s.IniFile.Section("Batch").Key("Line").String()

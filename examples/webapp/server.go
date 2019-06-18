@@ -31,7 +31,7 @@ func main() {
 	router.GET("/api/curCoilIds", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
 			"coilIdList": gm.Context.CoilIds,
-			"seriesList": gm.Context.FactorConf.GetSeriesArray(),
+			"seriesList": gm.Context.FactorConf.GetSeriesNames(),
 		})
 		c.Abort()
 	})

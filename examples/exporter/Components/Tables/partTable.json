@@ -24,44 +24,84 @@
                     "signal": "CLG\\Calc_Length"
                 },
                 {
-                    "part": "wedge25",
+                    "part": "wedge25_fit",
                     "dcafile": "MFG_POND",
                     "signal": "PR\\FM_DEL_WEDGE25"
                 },
                 {
-                    "part": "crown25",
+                    "part": "crown25_fit",
                     "dcafile": "MFG_POND",
                     "signal": "PR\\FM_DEL_CROWN25"
                 },
                 {
-                    "part": "wedge40",
+                    "part": "wedge25",
+                    "dcafile": "MFG_POND",
+                    "signal": "L2\\MFG_PROFB_WEDGE1"
+                },
+                {
+                    "part": "crown25",
+                    "dcafile": "MFG_POND",
+                    "signal": "L2\\MFG_PROFB_CROWN1"
+                },
+                {
+                    "part": "wedge40_fit",
                     "dcafile": "MFG_POND",
                     "signal": "PR\\FM_DEL_WEDGE40"
                 },
                 {
-                    "part": "crown40",
+                    "part": "crown40_fit",
                     "dcafile": "MFG_POND",
                     "signal": "PR\\FM_DEL_CROWN40"
                 },
                 {
-                    "part": "wedge70",
+                    "part": "wedge40",
+                    "dcafile": "MFG_POND",
+                    "signal": "L2\\MFG_PROFB_WEDGE2"
+                },
+                {
+                    "part": "crown40",
+                    "dcafile": "MFG_POND",
+                    "signal": "L2\\MFG_PROFB_CROWN2"
+                },
+                {
+                    "part": "wedge70_fit",
                     "dcafile": "MFG_POND",
                     "signal": "PR\\FM_DEL_WEDGE70"
                 },
                 {
-                    "part": "crown70",
+                    "part": "crown70_fit",
                     "dcafile": "MFG_POND",
                     "signal": "PR\\FM_DEL_CROWN70"
                 },
                 {
-                    "part": "wedge100",
+                    "part": "wedge70",
+                    "dcafile": "MFG_POND",
+                    "signal": "L2\\MFG_PROFB_WEDGE3"
+                },
+                {
+                    "part": "crown70",
+                    "dcafile": "MFG_POND",
+                    "signal": "L2\\MFG_PROFB_CROWN3"
+                },
+                {
+                    "part": "wedge100_fit",
                     "dcafile": "MFG_POND",
                     "signal": "PR\\FM_DEL_WEDGE100"
                 },
                 {
-                    "part": "crown100",
+                    "part": "crown100_fit",
                     "dcafile": "MFG_POND",
                     "signal": "PR\\FM_DEL_CROWN100"
+                },
+                {
+                    "part": "wedge100",
+                    "dcafile": "MFG_POND",
+                    "signal": "L2\\MFG_PROFB_WEDGE4"
+                },
+                {
+                    "part": "crown100",
+                    "dcafile": "MFG_POND",
+                    "signal": "L2\\MFG_PROFB_CROWN4"
                 },
                 {
                     "part": "mfg_calc_length",
@@ -109,37 +149,37 @@
                     "signal": "FM\\Calc_Length"
                 },
                 {
-                    "part": "pos_shift1",
+                    "part": "pos_shft1",
                     "dcafile": "F1_POND",
                     "signal": "TN\\L2_CF_F1WRSTPOSFBK"
                 },
                 {
-                    "part": "pos_shift2",
+                    "part": "pos_shft2",
                     "dcafile": "F2_POND",
                     "signal": "TN\\L2_CF_F2WRSTPOSFBK"
                 },
                 {
-                    "part": "pos_shift3",
+                    "part": "pos_shft3",
                     "dcafile": "F3_POND",
                     "signal": "TN\\L2_CF_F3WRSTPOSFBK"
                 },
                 {
-                    "part": "pos_shift4",
+                    "part": "pos_shft4",
                     "dcafile": "F4_POND",
                     "signal": "TN\\L2_CF_F4WRSTPOSFBK"
                 },
                 {
-                    "part": "pos_shift5",
+                    "part": "pos_shft5",
                     "dcafile": "F5_POND",
                     "signal": "TN\\L2_CF_F5WRSTPOSFBK"
                 },
                 {
-                    "part": "pos_shift6",
+                    "part": "pos_shft6",
                     "dcafile": "F6_POND",
                     "signal": "TN\\L2_CF_F6WRSTPOSFBK"
                 },
                 {
-                    "part": "pos_shift7",
+                    "part": "pos_shft7",
                     "dcafile": "F7_POND",
                     "signal": "TN\\L2_CF_F7WRSTPOSFBK"
                 },
@@ -224,7 +264,7 @@
                     "signal": "R2DT\\Calc_Length"
                 },
                 {
-                    "part": "r2_center_ofs",
+                    "part": "r2_cent_off",
                     "dcafile": "R2DW_POND",
                     "signal": "TN\\L2_R2_R2XCENTOFS"
                 },
@@ -256,7 +296,7 @@
                 {
                     "part": "fdt",
                     "dcafile": "FDT_POND",
-                    "signal": "TN\\L2_FA_FDT2TEMP"
+                    "signal": "TN\\L2_FA_FDT1TEMP"
                 },
                 {
                     "part": "fdt_calc_length",
@@ -374,144 +414,144 @@
                     "signal": "TN\\L2_AGC_F7DSGAPFBK"
                 },
                 {
-                    "part": "diff_rolling_force1",
+                    "part": "diff_roll_force1",
                     "dcafile": "F1_POND",
                     "signal": "TN\\L2_F1H_DIFRLFCFBK"
                 },
                 {
-                    "part": "diff_rolling_force2",
+                    "part": "diff_roll_force2",
                     "dcafile": "F2_POND",
                     "signal": "TN\\L2_F2H_DIFRLFCFBK"
                 },
                 {
-                    "part": "diff_rolling_force3",
+                    "part": "diff_roll_force3",
                     "dcafile": "F3_POND",
                     "signal": "TN\\L2_F3H_DIFRLFCFBK"
                 },
                 {
-                    "part": "diff_rolling_force4",
+                    "part": "diff_roll_force4",
                     "dcafile": "F4_POND",
                     "signal": "TN\\L2_F4H_DIFRLFCFBK"
                 },
                 {
-                    "part": "diff_rolling_force5",
+                    "part": "diff_roll_force5",
                     "dcafile": "F5_POND",
                     "signal": "TN\\L2_F5H_DIFRLFCFBK"
                 },
                 {
-                    "part": "diff_rolling_force6",
+                    "part": "diff_roll_force6",
                     "dcafile": "F6_POND",
                     "signal": "TN\\L2_F6H_DIFRLFCFBK"
                 },
                 {
-                    "part": "diff_rolling_force7",
+                    "part": "diff_roll_force7",
                     "dcafile": "F7_POND",
                     "signal": "TN\\L2_F7H_DIFRLFCFBK"
                 },
                 {
-                    "part": "total_rolling_force1",
+                    "part": "total_roll_force1",
                     "dcafile": "F1_POND",
                     "signal": "TN\\L2_F1H_TLRLFCFBK"
                 },
                 {
-                    "part": "total_rolling_force2",
+                    "part": "total_roll_force2",
                     "dcafile": "F2_POND",
                     "signal": "TN\\L2_F2H_TLRLFCFBK"
                 },
                 {
-                    "part": "total_rolling_force3",
+                    "part": "total_roll_force3",
                     "dcafile": "F3_POND",
                     "signal": "TN\\L2_F3H_TLRLFCFBK"
                 },
                 {
-                    "part": "total_rolling_force4",
+                    "part": "total_roll_force4",
                     "dcafile": "F4_POND",
                     "signal": "TN\\L2_F4H_TLRLFCFBK"
                 },
                 {
-                    "part": "total_rolling_force5",
+                    "part": "total_roll_force5",
                     "dcafile": "F5_POND",
                     "signal": "TN\\L2_F5H_TLRLFCFBK"
                 },
                 {
-                    "part": "total_rolling_force6",
+                    "part": "total_roll_force6",
                     "dcafile": "F6_POND",
                     "signal": "TN\\L2_F6H_TLRLFCFBK"
                 },
                 {
-                    "part": "total_rolling_force7",
+                    "part": "total_roll_force7",
                     "dcafile": "F7_POND",
                     "signal": "TN\\L2_F7H_TLRLFCFBK"
                 },
                 {
                     "part": "top_rgl_flow1",
                     "dcafile": "F1_POND",
-                    "signal": "nan"
+                    "signal": "TN\\L2_FA_F1TRLGLUBFL"
                 },
                 {
                     "part": "top_rgl_flow2",
                     "dcafile": "F2_POND",
-                    "signal": "nan"
+                    "signal": "TN\\L2_FA_F2TRLGLUBFL"
                 },
                 {
                     "part": "top_rgl_flow3",
                     "dcafile": "F3_POND",
-                    "signal": "nan"
+                    "signal": "TN\\L2_FA_F3TRLGLUBFL"
                 },
                 {
                     "part": "top_rgl_flow4",
                     "dcafile": "F4_POND",
-                    "signal": "nan"
+                    "signal": "TN\\L2_FA_F4TRLGLUBFL"
                 },
                 {
                     "part": "top_rgl_flow5",
                     "dcafile": "F5_POND",
-                    "signal": "nan"
+                    "signal": "TN\\L2_FA_F5TRLGLUBFL"
                 },
                 {
                     "part": "top_rgl_flow6",
                     "dcafile": "F6_POND",
-                    "signal": "nan"
+                    "signal": "TN\\L2_FA_F6TRLGLUBFL"
                 },
                 {
                     "part": "top_rgl_flow7",
                     "dcafile": "F7_POND",
-                    "signal": "nan"
+                    "signal": "TN\\L2_FA_F7TRLGLUBFL"
                 },
                 {
                     "part": "bot_rgl_flow1",
                     "dcafile": "F1_POND",
-                    "signal": "nan"
+                    "signal": "TN\\L2_FA_F1BRLGLUBFL"
                 },
                 {
                     "part": "bot_rgl_flow2",
                     "dcafile": "F2_POND",
-                    "signal": "nan"
+                    "signal": "TN\\L2_FA_F2BRLGLUBFL"
                 },
                 {
                     "part": "bot_rgl_flow3",
                     "dcafile": "F3_POND",
-                    "signal": "nan"
+                    "signal": "TN\\L2_FA_F3BRLGLUBFL"
                 },
                 {
                     "part": "bot_rgl_flow4",
                     "dcafile": "F4_POND",
-                    "signal": "nan"
+                    "signal": "TN\\L2_FA_F4BRLGLUBFL"
                 },
                 {
                     "part": "bot_rgl_flow5",
                     "dcafile": "F5_POND",
-                    "signal": "nan"
+                    "signal": "TN\\L2_FA_F5BRLGLUBFL"
                 },
                 {
                     "part": "bot_rgl_flow6",
                     "dcafile": "F6_POND",
-                    "signal": "nan"
+                    "signal": "TN\\L2_FA_F6BRLGLUBFL"
                 },
                 {
                     "part": "bot_rgl_flow7",
                     "dcafile": "F7_POND",
-                    "signal": "nan"
+                    "signal": "TN\\L2_FA_F7BRLGLUBFL"
                 },
                 {
                     "part": "ct_gap1",
@@ -549,7 +589,7 @@
                     "signal": "TN\\L2_AGC_F7CTGAPFBK"
                 },
                 {
-                    "part": "fm_center_ofs",
+                    "part": "fm_cent_off",
                     "dcafile": "MFG_POND",
                     "signal": "TN\\L2_CF_F7XPRFHKDEV"
                 },
@@ -624,34 +664,324 @@
                     "signal": "TN\\L2_F7H_F7WBDSFCFBK"
                 },
                 {
-                    "part": "isc_f12_flow",
+                    "part": "isc_flow_f12",
                     "dcafile": "FM_POND",
                     "signal": "TN\\L2_FA_F12ISCFL"
                 },
                 {
-                    "part": "isc_f23_flow",
+                    "part": "isc_flow_f23",
                     "dcafile": "FM_POND",
                     "signal": "TN\\L2_FA_F23ISCFL"
                 },
                 {
-                    "part": "isc_f34_flow",
+                    "part": "isc_flow_f34",
                     "dcafile": "FM_POND",
                     "signal": "TN\\L2_FA_F34ISCFL"
                 },
                 {
-                    "part": "isc_f45_flow",
+                    "part": "isc_flow_f45",
                     "dcafile": "FM_POND",
                     "signal": "TN\\L2_FA_F45ISCFL"
                 },
                 {
-                    "part": "isc_f56_flow",
+                    "part": "isc_flow_f56",
                     "dcafile": "FM_POND",
                     "signal": "TN\\L2_FA_F56ISCFL"
                 },
                 {
-                    "part": "isc_f67_flow",
+                    "part": "isc_flow_f67",
                     "dcafile": "FM_POND",
                     "signal": "TN\\L2_FA_F67ISCFL"
+                },
+                {
+                    "part": "wr_cool_flow_act1",
+                    "dcafile": "F1_POND",
+                    "signal": "TN\\L2_FA_F1RLCFL"
+                },
+                {
+                    "part": "wr_cool_flow_act2",
+                    "dcafile": "F2_POND",
+                    "signal": "TN\\L2_FA_F2RLCFL"
+                },
+                {
+                    "part": "wr_cool_flow_act3",
+                    "dcafile": "F3_POND",
+                    "signal": "TN\\L2_FA_F3RLCFL"
+                },
+                {
+                    "part": "wr_cool_flow_act4",
+                    "dcafile": "F4_POND",
+                    "signal": "TN\\L2_FA_F4RLCFL"
+                },
+                {
+                    "part": "wr_cool_flow_act5",
+                    "dcafile": "F5_POND",
+                    "signal": "TN\\L2_FA_F5RLCFL"
+                },
+                {
+                    "part": "wr_cool_flow_act6",
+                    "dcafile": "F6_POND",
+                    "signal": "TN\\L2_FA_F6RLCFL"
+                },
+                {
+                    "part": "wr_cool_flow_act7",
+                    "dcafile": "F7_POND",
+                    "signal": "TN\\L2_FA_F7RLCFL"
+                },
+                {
+                    "part": "isc_flow_perc12",
+                    "dcafile": "FM_POND",
+                    "signal": "TN\\L2_FA_F12ISCFLPER"
+                },
+                {
+                    "part": "isc_flow_perc23",
+                    "dcafile": "FM_POND",
+                    "signal": "TN\\L2_FA_F23ISCFLPER"
+                },
+                {
+                    "part": "isc_flow_perc34",
+                    "dcafile": "FM_POND",
+                    "signal": "TN\\L2_FA_F34ISCFLPER"
+                },
+                {
+                    "part": "isc_flow_perc45",
+                    "dcafile": "FM_POND",
+                    "signal": "TN\\L2_FA_F45ISCFLPER"
+                },
+                {
+                    "part": "isc_flow_perc56",
+                    "dcafile": "FM_POND",
+                    "signal": "TN\\L2_FA_F56ISCFLPER"
+                },
+                {
+                    "part": "isc_flow_perc67",
+                    "dcafile": "FM_POND",
+                    "signal": "TN\\L2_FA_F67ISCFLPER"
+                },
+                {
+                    "part": "top_rgl_on1",
+                    "dcafile": "F1_POND",
+                    "signal": "TN\\L2_FA_F1_TRGLON"
+                },
+                {
+                    "part": "top_rgl_on2",
+                    "dcafile": "F2_POND",
+                    "signal": "TN\\L2_FA_F2_TRGLON"
+                },
+                {
+                    "part": "top_rgl_on3",
+                    "dcafile": "F3_POND",
+                    "signal": "TN\\L2_FA_F3_TRGLON"
+                },
+                {
+                    "part": "top_rgl_on4",
+                    "dcafile": "F4_POND",
+                    "signal": "TN\\L2_FA_F4_TRGLON"
+                },
+                {
+                    "part": "top_rgl_on5",
+                    "dcafile": "F5_POND",
+                    "signal": "TN\\L2_FA_F5_TRGLON"
+                },
+                {
+                    "part": "top_rgl_on6",
+                    "dcafile": "F6_POND",
+                    "signal": "TN\\L2_FA_F6_TRGLON"
+                },
+                {
+                    "part": "top_rgl_on7",
+                    "dcafile": "F7_POND",
+                    "signal": "TN\\L2_FA_F7_TRGLON"
+                },
+                {
+                    "part": "bot_rgl_on1",
+                    "dcafile": "F1_POND",
+                    "signal": "TN\\L2_FA_F1_BRGLON"
+                },
+                {
+                    "part": "bot_rgl_on2",
+                    "dcafile": "F2_POND",
+                    "signal": "TN\\L2_FA_F2_BRGLON"
+                },
+                {
+                    "part": "bot_rgl_on3",
+                    "dcafile": "F3_POND",
+                    "signal": "TN\\L2_FA_F3_BRGLON"
+                },
+                {
+                    "part": "bot_rgl_on4",
+                    "dcafile": "F4_POND",
+                    "signal": "TN\\L2_FA_F4_BRGLON"
+                },
+                {
+                    "part": "bot_rgl_on5",
+                    "dcafile": "F5_POND",
+                    "signal": "TN\\L2_FA_F5_BRGLON"
+                },
+                {
+                    "part": "bot_rgl_on6",
+                    "dcafile": "F6_POND",
+                    "signal": "TN\\L2_FA_F6_BRGLON"
+                },
+                {
+                    "part": "bot_rgl_on7",
+                    "dcafile": "F7_POND",
+                    "signal": "TN\\L2_FA_F7_BRGLON"
+                },
+                {
+                    "part": "strip_spray_on1",
+                    "dcafile": "F1_POND",
+                    "signal": "TN\\L2_FA_F1_STSPON"
+                },
+                {
+                    "part": "strip_spray_on2",
+                    "dcafile": "F2_POND",
+                    "signal": "TN\\L2_FA_F2_STSPON"
+                },
+                {
+                    "part": "strip_spray_on3",
+                    "dcafile": "F3_POND",
+                    "signal": "TN\\L2_FA_F3_STSPON"
+                },
+                {
+                    "part": "strip_spray_on4",
+                    "dcafile": "F4_POND",
+                    "signal": "TN\\L2_FA_F4_STSPON"
+                },
+                {
+                    "part": "strip_spray_on5",
+                    "dcafile": "F5_POND",
+                    "signal": "TN\\L2_FA_F5_STSPON"
+                },
+                {
+                    "part": "strip_spray_on6",
+                    "dcafile": "F6_POND",
+                    "signal": "TN\\L2_FA_F6_STSPON"
+                },
+                {
+                    "part": "strip_spray_on7",
+                    "dcafile": "F7_POND",
+                    "signal": "TN\\L2_FA_F7_STSPON"
+                },
+                {
+                    "part": "r1_ent_dsc_on1",
+                    "dcafile": "R1_POND_1",
+                    "signal": "TN\\L2_R1_R1ENTDSCON"
+                },
+                {
+                    "part": "r1_ext_dsc_on1",
+                    "dcafile": "R1_POND_1",
+                    "signal": "TN\\L2_R1_R1EXTDSCON"
+                },
+                {
+                    "part": "r1_ent_dsc_on2",
+                    "dcafile": "R1_POND_2",
+                    "signal": "TN\\L2_R1_R1ENTDSCON"
+                },
+                {
+                    "part": "r1_ext_dsc_on2",
+                    "dcafile": "R1_POND_2",
+                    "signal": "TN\\L2_R1_R1EXTDSCON"
+                },
+                {
+                    "part": "r1_ent_dsc_on3",
+                    "dcafile": "R1_POND_3",
+                    "signal": "TN\\L2_R1_R1ENTDSCON"
+                },
+                {
+                    "part": "r1_ext_dsc_on3",
+                    "dcafile": "R1_POND_3",
+                    "signal": "TN\\L2_R1_R1EXTDSCON"
+                },
+                {
+                    "part": "r2_ent_dsc_on1",
+                    "dcafile": "R2_POND_1",
+                    "signal": "TN\\L2_R2_R2ENTDSCON"
+                },
+                {
+                    "part": "r2_ext_dsc_on1",
+                    "dcafile": "R2_POND_1",
+                    "signal": "TN\\L2_R2_R2EXTDSCON"
+                },
+                {
+                    "part": "r2_ent_dsc_on2",
+                    "dcafile": "R2_POND_2",
+                    "signal": "TN\\L2_R2_R2ENTDSCON"
+                },
+                {
+                    "part": "r2_ext_dsc_on2",
+                    "dcafile": "R2_POND_2",
+                    "signal": "TN\\L2_R2_R2EXTDSCON"
+                },
+                {
+                    "part": "r2_ent_dsc_on3",
+                    "dcafile": "R2_POND_3",
+                    "signal": "TN\\L2_R2_R2ENTDSCON"
+                },
+                {
+                    "part": "r2_ext_dsc_on3",
+                    "dcafile": "R2_POND_3",
+                    "signal": "TN\\L2_R2_R2EXTDSCON"
+                },
+                {
+                    "part": "r2_ent_dsc_on4",
+                    "dcafile": "R2_POND_4",
+                    "signal": "TN\\L2_R2_R2ENTDSCON"
+                },
+                {
+                    "part": "r2_ext_dsc_on4",
+                    "dcafile": "R2_POND_4",
+                    "signal": "TN\\L2_R2_R2EXTDSCON"
+                },
+                {
+                    "part": "r2_ent_dsc_on5",
+                    "dcafile": "R2_POND_5",
+                    "signal": "TN\\L2_R2_R2ENTDSCON"
+                },
+                {
+                    "part": "r2_ext_dsc_on5",
+                    "dcafile": "R2_POND_5",
+                    "signal": "TN\\L2_R2_R2EXTDSCON"
+                },
+                {
+                    "part": "r2_ent_dsc_on6",
+                    "dcafile": "R2_POND_6",
+                    "signal": "TN\\L2_R2_R2ENTDSCON"
+                },
+                {
+                    "part": "r2_ext_dsc_on6",
+                    "dcafile": "R2_POND_6",
+                    "signal": "TN\\L2_R2_R2EXTDSCON"
+                },
+                {
+                    "part": "r2_ent_dsc_on7",
+                    "dcafile": "R2_POND_7",
+                    "signal": "TN\\L2_R2_R2ENTDSCON"
+                },
+                {
+                    "part": "r2_ext_dsc_on7",
+                    "dcafile": "R2_POND_7",
+                    "signal": "TN\\L2_R2_R2EXTDSCON"
+                },
+                {
+                    "part": "r2_ent_dsc_on8",
+                    "dcafile": "R2_POND_8",
+                    "signal": "TN\\L2_R2_R2ENTDSCON"
+                },
+                {
+                    "part": "r2_ext_dsc_on8",
+                    "dcafile": "R2_POND_8",
+                    "signal": "TN\\L2_R2_R2EXTDSCON"
+                },
+                {
+                    "part": "r2_ent_dsc_on9",
+                    "dcafile": "R2_POND_9",
+                    "signal": "TN\\L2_R2_R2ENTDSCON"
+                },
+                {
+                    "part": "r2_ext_dsc_on9",
+                    "dcafile": "R2_POND_9",
+                    "signal": "TN\\L2_R2_R2EXTDSCON"
                 }
             ]
         },
@@ -764,37 +1094,37 @@
                     "signal": "FM\\Calc_Length"
                 },
                 {
-                    "part": "pos_shift1",
+                    "part": "pos_shft1",
                     "dcafile": "F1_POND",
                     "signal": "TN\\L_CF_F1WRSTPOSFBK"
                 },
                 {
-                    "part": "pos_shift2",
+                    "part": "pos_shft2",
                     "dcafile": "F2_POND",
                     "signal": "TN\\L_CF_F2WRSTPOSFBK"
                 },
                 {
-                    "part": "pos_shift3",
+                    "part": "pos_shft3",
                     "dcafile": "F3_POND",
                     "signal": "TN\\L_CF_F3WRSTPOSFBK"
                 },
                 {
-                    "part": "pos_shift4",
+                    "part": "pos_shft4",
                     "dcafile": "F4_POND",
                     "signal": "TN\\L_CF_F4WRSTPOSFBK"
                 },
                 {
-                    "part": "pos_shift5",
+                    "part": "pos_shft5",
                     "dcafile": "F5_POND",
                     "signal": "TN\\L_CF_F5WRSTPOSFBK"
                 },
                 {
-                    "part": "pos_shift6",
+                    "part": "pos_shft6",
                     "dcafile": "F6_POND",
                     "signal": "TN\\L_CF_F6WRSTPOSFBK"
                 },
                 {
-                    "part": "pos_shift7",
+                    "part": "pos_shft7",
                     "dcafile": "F7_POND",
                     "signal": "TN\\L_CF_F7WRSTPOSFBK"
                 },
@@ -874,7 +1204,7 @@
                     "signal": "R2DT\\Calc_Length"
                 },
                 {
-                    "part": "r2_center_ofs",
+                    "part": "r2_cent_off",
                     "dcafile": "R2DW_POND",
                     "signal": "TN\\L_R2_R2XCENTOFS"
                 },
@@ -1024,144 +1354,144 @@
                     "signal": "TN\\L_AG2_F7DSGAPFBK"
                 },
                 {
-                    "part": "diff_rolling_force1",
+                    "part": "diff_roll_force1",
                     "dcafile": "F1_POND",
                     "signal": "TN\\L_F1H_DIFRLFCFBK"
                 },
                 {
-                    "part": "diff_rolling_force2",
+                    "part": "diff_roll_force2",
                     "dcafile": "F2_POND",
                     "signal": "TN\\L_F2H_DIFRLFCFBK"
                 },
                 {
-                    "part": "diff_rolling_force3",
+                    "part": "diff_roll_force3",
                     "dcafile": "F3_POND",
                     "signal": "TN\\L_F3H_DIFRLFCFBK"
                 },
                 {
-                    "part": "diff_rolling_force4",
+                    "part": "diff_roll_force4",
                     "dcafile": "F4_POND",
                     "signal": "TN\\L_F4H_DIFRLFCFBK"
                 },
                 {
-                    "part": "diff_rolling_force5",
+                    "part": "diff_roll_force5",
                     "dcafile": "F5_POND",
                     "signal": "TN\\L_F5H_DIFRLFCFBK"
                 },
                 {
-                    "part": "diff_rolling_force6",
+                    "part": "diff_roll_force6",
                     "dcafile": "F6_POND",
                     "signal": "TN\\L_F6H_DIFRLFCFBK"
                 },
                 {
-                    "part": "diff_rolling_force7",
+                    "part": "diff_roll_force7",
                     "dcafile": "F7_POND",
                     "signal": "TN\\L_F7H_DIFRLFCFBK"
                 },
                 {
-                    "part": "total_rolling_force1",
+                    "part": "total_roll_force1",
                     "dcafile": "F1_POND",
                     "signal": "TN\\L_F1H_TLRLFCFBK"
                 },
                 {
-                    "part": "total_rolling_force2",
+                    "part": "total_roll_force2",
                     "dcafile": "F2_POND",
                     "signal": "TN\\L_F2H_TLRLFCFBK"
                 },
                 {
-                    "part": "total_rolling_force3",
+                    "part": "total_roll_force3",
                     "dcafile": "F3_POND",
                     "signal": "TN\\L_F3H_TLRLFCFBK"
                 },
                 {
-                    "part": "total_rolling_force4",
+                    "part": "total_roll_force4",
                     "dcafile": "F4_POND",
                     "signal": "TN\\L_F4H_TLRLFCFBK"
                 },
                 {
-                    "part": "total_rolling_force5",
+                    "part": "total_roll_force5",
                     "dcafile": "F5_POND",
                     "signal": "TN\\L_F5H_TLRLFCFBK"
                 },
                 {
-                    "part": "total_rolling_force6",
+                    "part": "total_roll_force6",
                     "dcafile": "F6_POND",
                     "signal": "TN\\L_F6H_TLRLFCFBK"
                 },
                 {
-                    "part": "total_rolling_force7",
+                    "part": "total_roll_force7",
                     "dcafile": "F7_POND",
                     "signal": "TN\\L_F7H_TLRLFCFBK"
                 },
                 {
                     "part": "top_rgl_flow1",
                     "dcafile": "F1_POND",
-                    "signal": "nan"
+                    "signal": "TN\\L_FA_F1TRLGLUBFL"
                 },
                 {
                     "part": "top_rgl_flow2",
                     "dcafile": "F2_POND",
-                    "signal": "nan"
+                    "signal": "TN\\L_FA_F2TRLGLUBFL"
                 },
                 {
                     "part": "top_rgl_flow3",
                     "dcafile": "F3_POND",
-                    "signal": "nan"
+                    "signal": "TN\\L_FA_F3TRLGLUBFL"
                 },
                 {
                     "part": "top_rgl_flow4",
                     "dcafile": "F4_POND",
-                    "signal": "nan"
+                    "signal": "TN\\L_FA_F4TRLGLUBFL"
                 },
                 {
                     "part": "top_rgl_flow5",
                     "dcafile": "F5_POND",
-                    "signal": "nan"
+                    "signal": "TN\\L_FA_F5TRLGLUBFL"
                 },
                 {
                     "part": "top_rgl_flow6",
                     "dcafile": "F6_POND",
-                    "signal": "nan"
+                    "signal": "TN\\L_FA_F6TRLGLUBFL"
                 },
                 {
                     "part": "top_rgl_flow7",
                     "dcafile": "F7_POND",
-                    "signal": "nan"
+                    "signal": "TN\\L_FA_F7TRLGLUBFL"
                 },
                 {
                     "part": "bot_rgl_flow1",
                     "dcafile": "F1_POND",
-                    "signal": "nan"
+                    "signal": "TN\\L_FA_F1BRLGLUBFL"
                 },
                 {
                     "part": "bot_rgl_flow2",
                     "dcafile": "F2_POND",
-                    "signal": "nan"
+                    "signal": "TN\\L_FA_F2BRLGLUBFL"
                 },
                 {
                     "part": "bot_rgl_flow3",
                     "dcafile": "F3_POND",
-                    "signal": "nan"
+                    "signal": "TN\\L_FA_F3BRLGLUBFL"
                 },
                 {
                     "part": "bot_rgl_flow4",
                     "dcafile": "F4_POND",
-                    "signal": "nan"
+                    "signal": "TN\\L_FA_F4BRLGLUBFL"
                 },
                 {
                     "part": "bot_rgl_flow5",
                     "dcafile": "F5_POND",
-                    "signal": "nan"
+                    "signal": "TN\\L_FA_F5BRLGLUBFL"
                 },
                 {
                     "part": "bot_rgl_flow6",
                     "dcafile": "F6_POND",
-                    "signal": "nan"
+                    "signal": "TN\\L_FA_F6BRLGLUBFL"
                 },
                 {
                     "part": "bot_rgl_flow7",
                     "dcafile": "F7_POND",
-                    "signal": "nan"
+                    "signal": "TN\\L_FA_F7BRLGLUBFL"
                 },
                 {
                     "part": "ct_gap1",
@@ -1199,7 +1529,7 @@
                     "signal": "TN\\L_AG2_F7CTGAPFBK"
                 },
                 {
-                    "part": "fm_center_ofs",
+                    "part": "fm_cent_off",
                     "dcafile": "FLT_POND",
                     "signal": "TN\\L_FA_F7XCENTOFSFLT"
                 },
@@ -1274,34 +1604,324 @@
                     "signal": "TN\\L_F7B_F7WBDSFCFBK"
                 },
                 {
-                    "part": "isc_f12_flow",
+                    "part": "isc_flow_f12",
                     "dcafile": "FM_POND",
                     "signal": "TN\\L_FA_F12ISCFL"
                 },
                 {
-                    "part": "isc_f23_flow",
+                    "part": "isc_flow_f23",
                     "dcafile": "FM_POND",
                     "signal": "TN\\L_FA_F23ISCFL"
                 },
                 {
-                    "part": "isc_f34_flow",
+                    "part": "isc_flow_f34",
                     "dcafile": "FM_POND",
                     "signal": "TN\\L_FA_F34ISCFL"
                 },
                 {
-                    "part": "isc_f45_flow",
+                    "part": "isc_flow_f45",
                     "dcafile": "FM_POND",
                     "signal": "TN\\L_FA_F45ISCFL"
                 },
                 {
-                    "part": "isc_f56_flow",
+                    "part": "isc_flow_f56",
                     "dcafile": "FM_POND",
                     "signal": "TN\\L_FA_F56ISCFL"
                 },
                 {
-                    "part": "isc_f67_flow",
+                    "part": "isc_flow_f67",
                     "dcafile": "FM_POND",
                     "signal": "TN\\L_FA_F67ISCFL"
+                },
+                {
+                    "part": "wr_cool_flow_act1",
+                    "dcafile": "F1_POND",
+                    "signal": "TN\\L_FA_F1RLCFL"
+                },
+                {
+                    "part": "wr_cool_flow_act2",
+                    "dcafile": "F2_POND",
+                    "signal": "TN\\L_FA_F2RLCFL"
+                },
+                {
+                    "part": "wr_cool_flow_act3",
+                    "dcafile": "F3_POND",
+                    "signal": "TN\\L_FA_F3RLCFL"
+                },
+                {
+                    "part": "wr_cool_flow_act4",
+                    "dcafile": "F4_POND",
+                    "signal": "TN\\L_FA_F4RLCFL"
+                },
+                {
+                    "part": "wr_cool_flow_act5",
+                    "dcafile": "F5_POND",
+                    "signal": "TN\\L_FA_F5RLCFL"
+                },
+                {
+                    "part": "wr_cool_flow_act6",
+                    "dcafile": "F6_POND",
+                    "signal": "TN\\L_FA_F6RLCFL"
+                },
+                {
+                    "part": "wr_cool_flow_act7",
+                    "dcafile": "F7_POND",
+                    "signal": "TN\\L_FA_F7RLCFL"
+                },
+                {
+                    "part": "isc_flow_perc12",
+                    "dcafile": "FM_POND",
+                    "signal": "TN\\L_FA_F12ISCFLPER"
+                },
+                {
+                    "part": "isc_flow_perc23",
+                    "dcafile": "FM_POND",
+                    "signal": "TN\\L_FA_F23ISCFLPER"
+                },
+                {
+                    "part": "isc_flow_perc34",
+                    "dcafile": "FM_POND",
+                    "signal": "TN\\L_FA_F34ISCFLPER"
+                },
+                {
+                    "part": "isc_flow_perc45",
+                    "dcafile": "FM_POND",
+                    "signal": "TN\\L_FA_F45ISCFLPER"
+                },
+                {
+                    "part": "isc_flow_perc56",
+                    "dcafile": "FM_POND",
+                    "signal": "TN\\L_FA_F56ISCFLPER"
+                },
+                {
+                    "part": "isc_flow_perc67",
+                    "dcafile": "FM_POND",
+                    "signal": "TN\\L_FA_F67ISCFLPER"
+                },
+                {
+                    "part": "top_rgl_on1",
+                    "dcafile": "F1_POND",
+                    "signal": "TN\\L_FA_F1TRLGLUBOILON"
+                },
+                {
+                    "part": "top_rgl_on2",
+                    "dcafile": "F2_POND",
+                    "signal": "TN\\L_FA_F2TRLGLUBOILON"
+                },
+                {
+                    "part": "top_rgl_on3",
+                    "dcafile": "F3_POND",
+                    "signal": "TN\\L_FA_F3TRLGLUBOILON"
+                },
+                {
+                    "part": "top_rgl_on4",
+                    "dcafile": "F4_POND",
+                    "signal": "TN\\L_FA_F4TRLGLUBOILON"
+                },
+                {
+                    "part": "top_rgl_on5",
+                    "dcafile": "F5_POND",
+                    "signal": "TN\\L_FA_F5TRLGLUBOILON"
+                },
+                {
+                    "part": "top_rgl_on6",
+                    "dcafile": "F6_POND",
+                    "signal": "TN\\L_FA_F6TRLGLUBOILON"
+                },
+                {
+                    "part": "top_rgl_on7",
+                    "dcafile": "F7_POND",
+                    "signal": "TN\\L_FA_F7TRLGLUBOILON"
+                },
+                {
+                    "part": "bot_rgl_on1",
+                    "dcafile": "F1_POND",
+                    "signal": "TN\\L_FA_F1BRLGLUBOILON"
+                },
+                {
+                    "part": "bot_rgl_on2",
+                    "dcafile": "F2_POND",
+                    "signal": "TN\\L_FA_F2BRLGLUBOILON"
+                },
+                {
+                    "part": "bot_rgl_on3",
+                    "dcafile": "F3_POND",
+                    "signal": "TN\\L_FA_F3BRLGLUBOILON"
+                },
+                {
+                    "part": "bot_rgl_on4",
+                    "dcafile": "F4_POND",
+                    "signal": "TN\\L_FA_F4BRLGLUBOILON"
+                },
+                {
+                    "part": "bot_rgl_on5",
+                    "dcafile": "F5_POND",
+                    "signal": "TN\\L_FA_F5BRLGLUBOILON"
+                },
+                {
+                    "part": "bot_rgl_on6",
+                    "dcafile": "F6_POND",
+                    "signal": "TN\\L_FA_F6BRLGLUBOILON"
+                },
+                {
+                    "part": "bot_rgl_on7",
+                    "dcafile": "F7_POND",
+                    "signal": "TN\\L_FA_F7BRLGLUBOILON"
+                },
+                {
+                    "part": "strip_spray_on1",
+                    "dcafile": "F1_POND",
+                    "signal": "TN\\L_FA_F1STSPON"
+                },
+                {
+                    "part": "strip_spray_on2",
+                    "dcafile": "F2_POND",
+                    "signal": "TN\\L_FA_F2STSPON"
+                },
+                {
+                    "part": "strip_spray_on3",
+                    "dcafile": "F3_POND",
+                    "signal": "TN\\L_FA_F3STSPON"
+                },
+                {
+                    "part": "strip_spray_on4",
+                    "dcafile": "F4_POND",
+                    "signal": "TN\\L_FA_F4STSPON"
+                },
+                {
+                    "part": "strip_spray_on5",
+                    "dcafile": "F5_POND",
+                    "signal": "TN\\L_FA_F5STSPON"
+                },
+                {
+                    "part": "strip_spray_on6",
+                    "dcafile": "F6_POND",
+                    "signal": "TN\\L_FA_F6STSPON"
+                },
+                {
+                    "part": "strip_spray_on7",
+                    "dcafile": "F7_POND",
+                    "signal": "TN\\L_FA_F7STSPON"
+                },
+                {
+                    "part": "r1_ent_dsc_on1",
+                    "dcafile": "R1_POND_P1",
+                    "signal": "TN\\L_R1_R1ENTDSCON"
+                },
+                {
+                    "part": "r1_ext_dsc_on1",
+                    "dcafile": "R1_POND_P1",
+                    "signal": "TN\\L_R1_R1EXTDSCON"
+                },
+                {
+                    "part": "r1_ent_dsc_on2",
+                    "dcafile": "R1_POND_P2",
+                    "signal": "TN\\L_R1_R1ENTDSCON"
+                },
+                {
+                    "part": "r1_ext_dsc_on2",
+                    "dcafile": "R1_POND_P2",
+                    "signal": "TN\\L_R1_R1EXTDSCON"
+                },
+                {
+                    "part": "r1_ent_dsc_on3",
+                    "dcafile": "R1_POND_P3",
+                    "signal": "TN\\L_R1_R1ENTDSCON"
+                },
+                {
+                    "part": "r1_ext_dsc_on3",
+                    "dcafile": "R1_POND_P3",
+                    "signal": "TN\\L_R1_R1EXTDSCON"
+                },
+                {
+                    "part": "r2_ent_dsc_on1",
+                    "dcafile": "R2_POND_P1",
+                    "signal": "TN\\L_R2_R2ENTDSCON"
+                },
+                {
+                    "part": "r2_ext_dsc_on1",
+                    "dcafile": "R2_POND_P1",
+                    "signal": "TN\\L_R2_R2EXTDSCON"
+                },
+                {
+                    "part": "r2_ent_dsc_on2",
+                    "dcafile": "R2_POND_P2",
+                    "signal": "TN\\L_R2_R2ENTDSCON"
+                },
+                {
+                    "part": "r2_ext_dsc_on2",
+                    "dcafile": "R2_POND_P2",
+                    "signal": "TN\\L_R2_R2EXTDSCON"
+                },
+                {
+                    "part": "r2_ent_dsc_on3",
+                    "dcafile": "R2_POND_P3",
+                    "signal": "TN\\L_R2_R2ENTDSCON"
+                },
+                {
+                    "part": "r2_ext_dsc_on3",
+                    "dcafile": "R2_POND_P3",
+                    "signal": "TN\\L_R2_R2EXTDSCON"
+                },
+                {
+                    "part": "r2_ent_dsc_on4",
+                    "dcafile": "R2_POND_P4",
+                    "signal": "TN\\L_R2_R2ENTDSCON"
+                },
+                {
+                    "part": "r2_ext_dsc_on4",
+                    "dcafile": "R2_POND_P4",
+                    "signal": "TN\\L_R2_R2EXTDSCON"
+                },
+                {
+                    "part": "r2_ent_dsc_on5",
+                    "dcafile": "R2_POND_P5",
+                    "signal": "TN\\L_R2_R2ENTDSCON"
+                },
+                {
+                    "part": "r2_ext_dsc_on5",
+                    "dcafile": "R2_POND_P5",
+                    "signal": "TN\\L_R2_R2EXTDSCON"
+                },
+                {
+                    "part": "r2_ent_dsc_on6",
+                    "dcafile": "R2_POND_P6",
+                    "signal": "TN\\L_R2_R2ENTDSCON"
+                },
+                {
+                    "part": "r2_ext_dsc_on6",
+                    "dcafile": "R2_POND_P6",
+                    "signal": "TN\\L_R2_R2EXTDSCON"
+                },
+                {
+                    "part": "r2_ent_dsc_on7",
+                    "dcafile": "R2_POND_P7",
+                    "signal": "TN\\L_R2_R2ENTDSCON"
+                },
+                {
+                    "part": "r2_ext_dsc_on7",
+                    "dcafile": "R2_POND_P7",
+                    "signal": "TN\\L_R2_R2EXTDSCON"
+                },
+                {
+                    "part": "r2_ent_dsc_on8",
+                    "dcafile": "R2_POND_P8",
+                    "signal": "TN\\L_R2_R2ENTDSCON"
+                },
+                {
+                    "part": "r2_ext_dsc_on8",
+                    "dcafile": "R2_POND_P8",
+                    "signal": "TN\\L_R2_R2EXTDSCON"
+                },
+                {
+                    "part": "r2_ent_dsc_on9",
+                    "dcafile": "R2_POND_P9",
+                    "signal": "TN\\L_R2_R2ENTDSCON"
+                },
+                {
+                    "part": "r2_ext_dsc_on9",
+                    "dcafile": "R2_POND_P9",
+                    "signal": "TN\\L_R2_R2EXTDSCON"
                 }
             ]
         }

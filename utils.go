@@ -141,3 +141,7 @@ func CheckError(err error) {
 		os.Exit(1)
 	}
 }
+
+func GetFmStands() []int {
+	return []int {1,2,3,4,5,6,7}
+}
