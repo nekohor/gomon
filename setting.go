@@ -3,94 +3,128 @@ package gomon
 import (
 	"log"
 	"os"
-
-	//"path/filepath"
-	// "gopkg.in/json.v2"
-	"github.com/go-ini/ini"
-
+	"github.com/BurntSushi/toml"
 	"fmt"
 	"time"
 )
 
 type Setting struct {
-	IniFile *ini.File
-
-	DataMaxNum int
-
-	SpecificFactorsMode bool
-	//SpecificFactors     []string
-
-	Line string
-
-	StartDate string
-	EndDate   string
-	DateArray []string
+	Data struct {
+		DataMaxNum int `toml:"DataMaxNum"`
+	} `toml:"Data"`
+	Mode struct {
+		AppMode string `toml:"AppMode"`
+	} `toml:"Mode"`
+	TCPServer struct {
+		Port int `toml:"port"`
+	} `toml:"TcpServer"`
+	BatchExportMode struct {
+		IsFactorsSpecific bool   `toml:"IsFactorsSpecific"`
+		Line              int    `toml:"Line"`
+		RootDir1580       string `toml:"RootDir1580"`
+		RootDir2250       string `toml:"RootDir2250"`
+		ResultDir         string `toml:"ResultDir"`
+		StartDate         int    `toml:"StartDate"`
+		EndDate           int    `toml:"EndDate"`
+	} `toml:"BatchExportMode"`
 }
+
 
 func NewSetting() *Setting {
 	s := new(Setting)
-
-	configuration, err := ini.Load(GetComponentsDir() + "/Configuration.ini")
-	if err != nil {
-		log.Printf("Fail to read file: %v", err)
-		os.Exit(1)
+	confPath := fmt.Sprintf(GetComponentsDir() + "/Setting.toml")
+	if _, err := toml.DecodeFile(confPath, &s); err != nil {
+		CheckError(err)
 	}
-	s.IniFile = configuration
+	log.Println(s)
 
-	s.DataMaxNum, err = s.IniFile.Section("Data").Key("DataMaxNum").Int()
-	if err != nil {
-		log.Println("Parse DataMaxNum Error", err)
-	}
-
-	s.SpecificFactorsMode, err = s.IniFile.Section("Specific").Key("SpecificFactorsMode").Bool()
-	if err != nil {
-		log.Println("Parse SpecificFactorsMode Error", err)
-	}
-	//s.SpecificFactors = strings.Split(s.IniFile.Section("Specific").Key("SpecificFactors").String(), ",")
-
-	if s.IsBatchMode() {
-		s.Line = s.IniFile.Section("Batch").Key("Line").String()
-		s.StartDate = s.IniFile.Section("Batch").Key("StartDate").String()
-		s.EndDate = s.IniFile.Section("Batch").Key("EndDate").String()
-		s.DateArray = s.GetDateArray()
-		log.Println(s.DateArray)
-	}
 	return s
 }
 
-func (s *Setting) IsBatchMode() bool {
-	BatchMode, err := s.IniFile.Section("Batch").Key("BatchMode").Bool()
-	if err != nil {
-		log.Println("Parse BatchMode Error", err)
-	}
-	return BatchMode
+//type SettingOld struct {
+//	//=======================
+//	IniFile *ini.File
+//	//=======================
+//
+//	//[Data]
+//	DataMaxNum int
+//
+//	//[Mode]
+//	AppMode string
+//
+//	//[BatchExportMode]
+//	IsFactorsSpecific bool
+//	Line string
+//	StartDate string
+//	EndDate   string
+//	DateArray []string
+//}
+
+//func NewSettingOld() *Setting {
+//	s := new(Setting)
+//
+//	// get conf setting ini file
+//	configuration, err := ini.Load(GetComponentsDir() + "/Setting.ini")
+//	if err != nil {
+//		log.Printf("Fail to read file: %v", err)
+//		os.Exit(1)
+//	}
+//	s.IniFile = configuration
+//
+//	// DataMaxNum
+//	s.DataMaxNum, err = s.IniFile.Section("Data").Key("DataMaxNum").Int()
+//	if err != nil {
+//		log.Println("Parse DataMaxNum Error", err)
+//	}
+//
+//	if s.IsBatchExportMode() {
+//
+//		s.IsFactorsSpecific, err = s.IniFile.Section("BatchExportMode").Key("IsFactorsSpecific").Bool()
+//		if err != nil {
+//			log.Println("Parse IsFactorsSpecific Error", err)
+//		}
+//
+//		s.Line = s.IniFile.Section("BatchExportMode").Key("Line").String()
+//
+//		s.StartDate = s.IniFile.Section("BatchExportMode").Key("StartDate").String()
+//		s.EndDate = s.IniFile.Section("BatchExportMode").Key("EndDate").String()
+//
+//		s.DateArray = s.GetDateArray()
+//		log.Println(s.DateArray)
+//	}
+//	return s
+//}
+
+func (s *Setting) IsBatchExportMode() bool {
+	return s.Mode.AppMode == "BatchExport"
 }
 
 func (s *Setting) GetRootDir() string {
-	if s.Line == "1580" {
-		return s.IniFile.Section("Batch").Key("RootDir1580").String()
-	} else if s.Line == "2250" {
-		return s.IniFile.Section("Batch").Key("RootDir2250").String()
+	if s.BatchExportMode.Line == 1580 {
+		return s.BatchExportMode.RootDir1580
+	} else if s.BatchExportMode.Line == 2250 {
+		return s.BatchExportMode.RootDir2250
 	} else {
-		panic("Setup line for root dir is wrong")
+		panic("Line of BatchExportMode in setting for root dir is wrong")
 	}
 }
 
 func (s *Setting) GetResultDir() string {
-	if s.IsBatchMode() {
-		return s.IniFile.Section("Batch").Key("ResultDir").String()
+	if s.IsBatchExportMode() {
+		return s.BatchExportMode.ResultDir
 	} else {
 		return os.Args[2]
 	}
 }
 
 func (s *Setting) GetDateArray() []string {
+
 	const layout = "20060102"
-	start, err := time.Parse(layout, s.StartDate)
+	start, err := time.Parse(layout, string(s.BatchExportMode.StartDate))
 	if err != nil {
 		log.Fatalf("Parse StartDate error: %v", err)
 	}
-	end, err := time.Parse(layout, s.EndDate)
+	end, err := time.Parse(layout, string(s.BatchExportMode.EndDate))
 	if err != nil {
 		log.Fatalf("Parse EndDate error: %v", err)
 	}
@@ -98,8 +132,9 @@ func (s *Setting) GetDateArray() []string {
 	duration, _ := time.ParseDuration("24h")
 	sumDay := int(end.Sub(start).Hours()/24) + 1
 	// log.Println(sumDay.Hours() / 24)
+
 	dateArray := []string{}
-	curDate, _ := time.Parse(layout, s.StartDate)
+	curDate, _ := time.Parse(layout, string(s.BatchExportMode.StartDate))
 	for i := 0; i < sumDay; i++ {
 		// log.Println("iter", dateArray)
 		dateArray = append(dateArray, curDate.Format("20060102"))
@@ -113,18 +148,10 @@ func (s *Setting) GetCurDirInBatchMode(date string) string {
 	return fmt.Sprintf("%s/%s/%s", s.GetRootDir(), date[:6], date)
 }
 
-//func (s *Setting) InitCurDir() string {
-//	if s.IsBatchMode() {
-//		return s.GetCurDirInBatchMode(s.StartDate)
-//	} else {
-//		return os.Args[1]
-//	}
-//}
-
 func (s *Setting) GetResultFilePathInBatchMode(curDate string) string {
 
-	fileName := fmt.Sprintf("ExportedData_%s_%s.json", s.Line, curDate)
-	fileDir := fmt.Sprintf("%s/%s/%s", s.GetResultDir(), s.Line, curDate[:6])
+	fileName := fmt.Sprintf("ExportedData_%s_%s.json", s.BatchExportMode.Line, curDate)
+	fileDir := fmt.Sprintf("%s/%s/%s", s.GetResultDir(), s.BatchExportMode.Line, curDate[:6])
 	err := CreateDir(fileDir)
 	if err != nil {
 		log.Fatal(err)

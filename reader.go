@@ -69,7 +69,7 @@ func NewReader() *Reader {
 
 func (reader *Reader) ReadData(ctx *Context, dcaPath, signalName string) (int, []dataType) {
 
-	size := ctx.Setting.DataMaxNum
+	size := ctx.Setting.Data.DataMaxNum
 	dataArray := make([]dataType, size)
 	if IsExist(dcaPath) == true {
 

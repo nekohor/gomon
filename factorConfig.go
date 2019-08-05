@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/BurntSushi/toml"
 	"log"
+	"strconv"
 )
 
 type FactorConfig struct {
@@ -19,10 +20,10 @@ type TomlFactors struct {
 	} `toml:"factors"`
 }
 
-type TomlSeries struct {
-	SeriesName string `toml:seriesName`
-	FactorNames []string `toml:factorNames`
-}
+//type TomlSeries struct {
+//	SeriesName string `toml:seriesName`
+//	FactorNames []string `toml:factorNames`
+//}
 
 type TomlSpecificFactors struct {
 	FactorNames []string `toml:factorNames`
@@ -47,7 +48,7 @@ func NewFactorConfig(setting *Setting) *FactorConfig {
 }
 
 func (f *FactorConfig) GetFactorNames() []string {
-	if f.Setting.SpecificFactorsMode {
+	if f.Setting.IsBatchExportMode() && f.Setting.BatchExportMode.IsFactorsSpecific {
 		return f.TomlSpecifc.FactorNames
 	} else {
 		return f.GetAllFactorNames()
@@ -88,7 +89,7 @@ func (f *FactorConfig) GetFmStandFactorNames(factorNames []string) []string {
 
 	for _, std := range GetFmStands() {
 		for _, factorName := range factorNames {
-			allFactorNames = append(allFactorNames, factorName + string(std))
+			allFactorNames = append(allFactorNames, factorName + strconv.Itoa(std))
 		}
 	}
 

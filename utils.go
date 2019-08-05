@@ -84,9 +84,9 @@ func GetMillLine(ctx *Context, coilId string) string {
 	} else if string(coilId[0]) == "H" {
 		return "2250"
 	} else if string(coilId[0]) == "G" {
-		return ctx.Setting.Line
+		return "2250"
 	} else if string(coilId[0]) == "C" {
-		return ctx.Setting.Line
+		return "1580"
 	} else {
 		log.Println("In JudgeLine Else Logic")
 		log.Println(coilId)
@@ -103,7 +103,7 @@ func CreateDir(path string) error {
 	return nil
 }
 
-// 判断所给路径文件/文件夹是否存在(返回true是存在)
+/* 判断所给路径文件/文件夹是否存在(返回true是存在) */
 func IsExist(path string) bool {
 	_, err := os.Stat(path) //os.Stat获取文件信息
 	if err != nil {
