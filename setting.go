@@ -41,60 +41,6 @@ func NewSetting() *Setting {
 	return s
 }
 
-//type SettingOld struct {
-//	//=======================
-//	IniFile *ini.File
-//	//=======================
-//
-//	//[Data]
-//	DataMaxNum int
-//
-//	//[Mode]
-//	AppMode string
-//
-//	//[BatchExportMode]
-//	IsFactorsSpecific bool
-//	Line string
-//	StartDate string
-//	EndDate   string
-//	DateArray []string
-//}
-
-//func NewSettingOld() *Setting {
-//	s := new(Setting)
-//
-//	// get conf setting ini file
-//	configuration, err := ini.Load(GetComponentsDir() + "/Setting.ini")
-//	if err != nil {
-//		log.Printf("Fail to read file: %v", err)
-//		os.Exit(1)
-//	}
-//	s.IniFile = configuration
-//
-//	// DataMaxNum
-//	s.DataMaxNum, err = s.IniFile.Section("Data").Key("DataMaxNum").Int()
-//	if err != nil {
-//		log.Println("Parse DataMaxNum Error", err)
-//	}
-//
-//	if s.IsBatchExportMode() {
-//
-//		s.IsFactorsSpecific, err = s.IniFile.Section("BatchExportMode").Key("IsFactorsSpecific").Bool()
-//		if err != nil {
-//			log.Println("Parse IsFactorsSpecific Error", err)
-//		}
-//
-//		s.Line = s.IniFile.Section("BatchExportMode").Key("Line").String()
-//
-//		s.StartDate = s.IniFile.Section("BatchExportMode").Key("StartDate").String()
-//		s.EndDate = s.IniFile.Section("BatchExportMode").Key("EndDate").String()
-//
-//		s.DateArray = s.GetDateArray()
-//		log.Println(s.DateArray)
-//	}
-//	return s
-//}
-
 func (s *Setting) IsBatchExportMode() bool {
 	return s.Mode.AppMode == "BatchExport"
 }

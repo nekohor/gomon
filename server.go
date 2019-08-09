@@ -9,12 +9,13 @@ import (
 )
 
 func RunServer(app *Monitor) {
-	port := app.Context.Setting.TCPServer.Port
-	service := ":" + strconv.Itoa(port)
-	tcpAddr, err := net.ResolveTCPAddr("tcp4", service)
+
+	port := ":" + strconv.Itoa(app.Ctx.Cfg.Port)
+	tcpAddr, err := net.ResolveTCPAddr("tcp4", port)
 	CheckError(err)
 	listener, err := net.ListenTCP("tcp", tcpAddr)
 	CheckError(err)
+
 	for {
 		conn, err := listener.Accept()
 
@@ -22,6 +23,7 @@ func RunServer(app *Monitor) {
 			log.Println(err)
 			continue
 		}
+
 		handleClient(app, conn)
 		conn.Close()
 	}

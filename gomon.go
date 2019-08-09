@@ -1,16 +1,17 @@
 package gomon
 
-func Run() {
-	app := NewMonitor()
+import "log"
 
-	mode := app.Context.Setting.Mode.AppMode
+func Run(config *Config) {
 
-	switch mode {
-	case "DefaultExport":
-		app.ExportDefault()
-	case "BatchExport":
-		app.ExportBatch()
-	case "TcpServer":
+	log.Println(config)
+
+	app := New()
+	app.Ctx.SetConfig(config)
+
+	if config.IsExport {
+		app.ExportCurrent()
+	} else {
 		RunServer(app)
 	}
 }

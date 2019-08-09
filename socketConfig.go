@@ -9,7 +9,6 @@ type SocketConfig struct {
 
 	ReqString string
 
-	//Setting *Setting
 	CoilIds []string
 	Requests map[string]*Request
 

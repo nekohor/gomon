@@ -7,23 +7,26 @@ import (
 )
 
 type Context struct {
-	Setting    *Setting
+	Cfg     *Config
 	PartConf   *PartConfig
 	FactorConf *FactorConfig
 	Reader     *Reader
 
 	CoilIds []string
-
 	CurDir string
+
 	//CurCoilId     string
 	//CurFactorName string
 }
 
 func NewContext() *Context {
 	this := new(Context)
-	this.Setting = NewSetting()
-	this.PartConf = NewPartConfig(this.Setting)
-	this.FactorConf = NewFactorConfig(this.Setting)
 	this.Reader = NewReader()
 	return this
+}
+
+func (c * Context) SetConfig(config *Config) {
+	c.Cfg = config
+	c.PartConf = NewPartConfig(c.Cfg)
+	c.FactorConf = NewFactorConfig(c.Cfg)
 }
