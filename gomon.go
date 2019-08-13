@@ -1,6 +1,8 @@
 package gomon
 
-import "log"
+import (
+	"log"
+)
 
 func Run(config *Config) {
 
@@ -16,5 +18,19 @@ func Run(config *Config) {
 	}
 }
 
+
+func RespondData(request []byte) map[string]*Coil {
+	app := New()
+
+	config := NewConfig()
+	config.SetComponentsDir("./")
+	config.SetDataMaxNum(3999)
+
+	app.Ctx.SetConfig(config)
+
+	coils := app.RespondCoils(string(request))
+
+	return coils
+}
 
 

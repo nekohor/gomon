@@ -48,6 +48,8 @@ func handleClient(app *Monitor, conn net.Conn) {
 	b, err := json.MarshalIndent(coils, "", "  ")
 	CheckError(err)
 
+	//log.Println(coils)
+
 	//defer conn.Close()
 	conn.Write(b)
 }
