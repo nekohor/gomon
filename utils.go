@@ -123,8 +123,16 @@ func GetExeDir() string {
 	return exeDir
 }
 
+func GetAbsPath(path string) string {
+	absDir, err := filepath.Abs(path)
+	if err != nil {
+		log.Fatal(err)
+	}
+	return absDir
+}
+
 func GetComponentsDir() string {
-	return GetExeDir() + "/" + "Components"
+	return GetExeDir() + "/" + "components"
 }
 
 func GJsonArrayToStringArray(gJsonArr []gjson.Result) []string {

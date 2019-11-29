@@ -14,26 +14,26 @@ class RoughEdgePonder(BasePonder):
 
         self.e1_signals = {}
         self.e1_signals["2250"] = {
-            "e1_gap": "TN\\\\L_R1_E1GAP",
-            "e1_roll_force": "TN\\\\L_R1_E1AVERLFCE",
-            "e1_diff_force": "TN\\\\L_R1_E1DIFRLFCE",
+            "e1_gap": "TN\\L_R1_E1GAP",
+            "e1_roll_force": "TN\\L_R1_E1AVERLFCE",
+            "e1_diff_force": "TN\\L_R1_E1DIFRLFCE",
         }
         self.e1_signals["1580"] = {
-            "e1_gap": "TN\\\\L2_R1_E1GAP",
-            "e1_roll_force": "TN\\\\L2_R1_E1AVERLFCE",
-            "e1_diff_force": "TN\\\\L2_R1_E1DIFRLFCE",
+            "e1_gap": "TN\\L2_R1_E1GAP",
+            "e1_roll_force": "TN\\L2_R1_E1AVERLFCE",
+            "e1_diff_force": "TN\\L2_R1_E1DIFRLFCE",
         }
 
         self.e2_signals = {}
         self.e2_signals["2250"] = {
-            "e2_gap": "TN\\\\L_R2_E2GAP",
-            "e2_roll_force": "TN\\\\L_R2_E2AVERLFCE",
-            "e2_diff_force": "TN\\\\L_R2_E2DIFRLFCE",
+            "e2_gap": "TN\\L_R2_E2GAP",
+            "e2_roll_force": "TN\\L_R2_E2AVERLFCE",
+            "e2_diff_force": "TN\\L_R2_E2DIFRLFCE",
         }
         self.e2_signals["1580"] = {
-            "e2_gap": "TN\\\\L2_R2_E2GAP",
-            "e2_roll_force": "TN\\\\L2_R2_E2AVERLFCE",
-            "e2_diff_force": "TN\\\\L2_R2_E2DIFRLFCE",
+            "e2_gap": "TN\\L2_R2_E2GAP",
+            "e2_roll_force": "TN\\L2_R2_E2AVERLFCE",
+            "e2_diff_force": "TN\\L2_R2_E2DIFRLFCE",
         }
 
     def build_df(self):
@@ -57,12 +57,3 @@ class RoughEdgePonder(BasePonder):
                         "DCAFILE": self.dcafiles[line].format(2, num),
                         "SIGNAL": signal
                     }, ignore_index=True)
-
-
-
-
-
-
-
-
-

@@ -13,7 +13,10 @@ factorNames= [
 seriesName="shape"
 factorNames= [
                 "thick_clg",
+                "thick_mfg",
+                "width_mfg",
                 "crown40",
+                "crown70",
                 "wedge40",
                 "sym_flt",
                 "asym_flt",

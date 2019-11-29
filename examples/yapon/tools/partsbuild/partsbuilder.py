@@ -40,12 +40,12 @@ class PartsBuilder():
 
         df.to_excel(self.table_name)
 
-    def transfer_to_json(self):
-
-        df = pd.read_excel(self.table_name)
+    def get_part_dict(self):
 
         part_dict = {}
         part_dict["partTable"] = []
+
+        df = pd.read_excel(self.table_name)
         line_list = df["LINE"].unique()
 
         for i, line in enumerate(line_list):
@@ -62,16 +62,25 @@ class PartsBuilder():
                 table[j]["dcafile"] = records.loc[idx, "DCAFILE"]
                 # print(records.loc[idx, "SIGNAL"])
                 table[j]["signal"] = (
-                    str(records.loc[idx, "SIGNAL"]).replace("\\\\", "\\"))
+                    str(records.loc[idx, "SIGNAL"])).replace("\\", "\\")
 
+        return part_dict
+
+    def transfer_to_json(self):
+        part_dict = self.get_part_dict()
         # print(part_dict)
-        with open(
-            "../../Components/Tables/partTable{}.json".format(
-                self.get_suffix()),
-            "w",
-            encoding='utf-8'
-        ) as jsfile:
-            json.dump(part_dict, jsfile, indent=4, ensure_ascii=False)
+
+        registered_json_file_path = [
+            "../../components/part_table{}.json",
+            "d:/NutCloudSync/code" +
+            "/HotRollAnalyzer/exporter/components/part_table{}.json"
+        ]
+
+        for file_path in registered_json_file_path:
+            with open(
+                    file_path.format(self.get_suffix()), "w", encoding='utf-8'
+            ) as jsfile:
+                json.dump(part_dict, jsfile, indent=4, ensure_ascii=False)
 
     def get_suffix(self):
 

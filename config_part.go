@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/tidwall/gjson"
 	"io/ioutil"
+	"log"
 )
 
 type PartConfig struct {
@@ -15,10 +16,13 @@ func NewPartConfig(cfg *Config) *PartConfig {
 	conf := new(PartConfig)
 	conf.Cfg = cfg
 
-	tablePath := fmt.Sprintf(conf.Cfg.GetComponentsDir() + "/part_table.json")
+	tablePath := fmt.Sprintf(GetComponentsDir() + "/part_table" + conf.Cfg.FmTag +".json")
+
+	log.Println(tablePath)
+
 	byteTable, err := ioutil.ReadFile(tablePath)
 	if err != nil {
-		panic("Json partTable read fail")
+		panic("Json part table read fail")
 	}
 	conf.Table = string(byteTable)
 	return conf

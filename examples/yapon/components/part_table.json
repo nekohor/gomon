@@ -99,6 +99,11 @@
                     "signal": "CT\\Calc_Length"
                 },
                 {
+                    "part": "r2dw_calc_length",
+                    "dcafile": "R2DW_POND",
+                    "signal": "R2DW\\Calc_Length"
+                },
+                {
                     "part": "e1_gap1",
                     "dcafile": "E1_POND_P1",
                     "signal": "TN\\L_R1_E1GAP"
@@ -997,6 +1002,16 @@
                     "part": "r2_trans_length9",
                     "dcafile": "R2_POND_P9",
                     "signal": "TN\\L_R2_R2TRANSLEN"
+                },
+                {
+                    "part": "fsb_ent_on",
+                    "dcafile": "F1E_POND",
+                    "signal": "TN\\L_FA_DSCENTON"
+                },
+                {
+                    "part": "fsb_ext_on",
+                    "dcafile": "F1E_POND",
+                    "signal": "TN\\L_FA_DSCEXTON"
                 },
                 {
                     "part": "ct_gap1",
@@ -2389,6 +2404,11 @@
                     "signal": "TN\\L_AG2_F7XTHKCDEVCLG"
                 },
                 {
+                    "part": "thick_mfg",
+                    "dcafile": "MFG_POND",
+                    "signal": "TN\\L_AG2_F7XTHKCDEVMFG"
+                },
+                {
                     "part": "width_flt",
                     "dcafile": "FLT_POND",
                     "signal": "TN\\L_FA_F7XWIDDEVFLT"
@@ -2400,42 +2420,42 @@
                 },
                 {
                     "part": "wedge25",
-                    "dcafile": "FLT_POND",
+                    "dcafile": "MFG_POND",
                     "signal": "L2\\FMX_MFT_PROFB_WEDGE1"
                 },
                 {
                     "part": "wedge40",
-                    "dcafile": "FLT_POND",
+                    "dcafile": "MFG_POND",
                     "signal": "L2\\FMX_MFT_PROFB_WEDGE2"
                 },
                 {
                     "part": "wedge70",
-                    "dcafile": "FLT_POND",
+                    "dcafile": "MFG_POND",
                     "signal": "L2\\FMX_MFT_PROFB_WEDGE3"
                 },
                 {
                     "part": "wedge100",
-                    "dcafile": "FLT_POND",
+                    "dcafile": "MFG_POND",
                     "signal": "L2\\FMX_MFT_PROFB_WEDGE4"
                 },
                 {
                     "part": "crown25",
-                    "dcafile": "FLT_POND",
+                    "dcafile": "MFG_POND",
                     "signal": "L2\\FMX_MFT_PROFB_CROWN1"
                 },
                 {
                     "part": "crown40",
-                    "dcafile": "FLT_POND",
+                    "dcafile": "MFG_POND",
                     "signal": "L2\\FMX_MFT_PROFB_CROWN2"
                 },
                 {
                     "part": "crown70",
-                    "dcafile": "FLT_POND",
+                    "dcafile": "MFG_POND",
                     "signal": "L2\\FMX_MFT_PROFB_CROWN3"
                 },
                 {
                     "part": "crown100",
-                    "dcafile": "FLT_POND",
+                    "dcafile": "MFG_POND",
                     "signal": "L2\\FMX_MFT_PROFB_CROWN4"
                 },
                 {
@@ -2475,7 +2495,7 @@
                 },
                 {
                     "part": "fm_cent_off",
-                    "dcafile": "MFG_POND",
+                    "dcafile": "FLT_POND",
                     "signal": "TN\\L_FA_F7XCENTOFSFLT"
                 }
             ]
@@ -2577,6 +2597,11 @@
                     "part": "ct_calc_length",
                     "dcafile": "CT_POND",
                     "signal": "CT\\Calc_Length"
+                },
+                {
+                    "part": "r2dw_calc_length",
+                    "dcafile": "R2DW_POND",
+                    "signal": "R2DW\\Calc_Length"
                 },
                 {
                     "part": "e1_gap1",
@@ -3537,6 +3562,16 @@
                     "part": "r2_ext_dsc_on9",
                     "dcafile": "R2_POND_9",
                     "signal": "TN\\L2_R2_R2EXTDSCON"
+                },
+                {
+                    "part": "fsb_ent_on",
+                    "dcafile": "FSB_POND",
+                    "signal": "TN\\L2_FA_DSCENTON"
+                },
+                {
+                    "part": "fsb_ext_on",
+                    "dcafile": "FSB_POND",
+                    "signal": "TN\\L2_FA_DSCEXTON"
                 },
                 {
                     "part": "ct_gap1",
@@ -5399,6 +5434,11 @@
                     "signal": "TN\\L2_AGC_F7XTHKCDEVCLG"
                 },
                 {
+                    "part": "thick_mfg",
+                    "dcafile": "MFG_POND",
+                    "signal": "TN\\L2_AGC_F7XTHKCDEVAGC"
+                },
+                {
                     "part": "width_flt",
                     "dcafile": "FLT_POND",
                     "signal": "TN\\L2_FA_FLTWDEV"
@@ -5410,82 +5450,82 @@
                 },
                 {
                     "part": "wedge25",
-                    "dcafile": "FLT_POND",
+                    "dcafile": "MFG_POND",
                     "signal": "L2\\MFG_PROFB_WEDGE1"
                 },
                 {
                     "part": "wedge40",
-                    "dcafile": "FLT_POND",
+                    "dcafile": "MFG_POND",
                     "signal": "L2\\MFG_PROFB_WEDGE2"
                 },
                 {
                     "part": "wedge70",
-                    "dcafile": "FLT_POND",
+                    "dcafile": "MFG_POND",
                     "signal": "L2\\MFG_PROFB_WEDGE3"
                 },
                 {
                     "part": "wedge100",
-                    "dcafile": "FLT_POND",
+                    "dcafile": "MFG_POND",
                     "signal": "L2\\MFG_PROFB_WEDGE4"
                 },
                 {
                     "part": "crown25",
-                    "dcafile": "FLT_POND",
+                    "dcafile": "MFG_POND",
                     "signal": "L2\\MFG_PROFB_CROWN1"
                 },
                 {
                     "part": "crown40",
-                    "dcafile": "FLT_POND",
+                    "dcafile": "MFG_POND",
                     "signal": "L2\\MFG_PROFB_CROWN2"
                 },
                 {
                     "part": "crown70",
-                    "dcafile": "FLT_POND",
+                    "dcafile": "MFG_POND",
                     "signal": "L2\\MFG_PROFB_CROWN3"
                 },
                 {
                     "part": "crown100",
-                    "dcafile": "FLT_POND",
+                    "dcafile": "MFG_POND",
                     "signal": "L2\\MFG_PROFB_CROWN4"
                 },
                 {
                     "part": "wedge25_fit",
-                    "dcafile": "FLT_POND",
+                    "dcafile": "MFG_POND",
                     "signal": "PR\\FM_DEL_WEDGE25"
                 },
                 {
                     "part": "wedge40_fit",
-                    "dcafile": "FLT_POND",
+                    "dcafile": "MFG_POND",
                     "signal": "PR\\FM_DEL_WEDGE40"
                 },
                 {
                     "part": "wedge70_fit",
-                    "dcafile": "FLT_POND",
+                    "dcafile": "MFG_POND",
                     "signal": "PR\\FM_DEL_WEDGE70"
                 },
                 {
                     "part": "wedge100_fit",
-                    "dcafile": "FLT_POND",
+                    "dcafile": "MFG_POND",
                     "signal": "PR\\FM_DEL_WEDGE100"
                 },
                 {
                     "part": "crown25_fit",
-                    "dcafile": "FLT_POND",
+                    "dcafile": "MFG_POND",
                     "signal": "PR\\FM_DEL_CROWN25"
                 },
                 {
                     "part": "crown40_fit",
-                    "dcafile": "FLT_POND",
+                    "dcafile": "MFG_POND",
                     "signal": "PR\\FM_DEL_CROWN40"
                 },
                 {
                     "part": "crown70_fit",
-                    "dcafile": "FLT_POND",
+                    "dcafile": "MFG_POND",
                     "signal": "PR\\FM_DEL_CROWN70"
                 },
                 {
                     "part": "crown100_fit",
-                    "dcafile": "FLT_POND",
+                    "dcafile": "MFG_POND",
                     "signal": "PR\\FM_DEL_CROWN100"
                 },
                 {
@@ -5530,7 +5570,7 @@
                 },
                 {
                     "part": "fm_cent_off",
-                    "dcafile": "FLT_POND",
+                    "dcafile": "MFG_POND",
                     "signal": "TN\\L2_CF_F7XPRFHKDEV"
                 }
             ]

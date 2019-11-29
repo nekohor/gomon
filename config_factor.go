@@ -34,7 +34,7 @@ func NewFactorConfig(cfg *Config) *FactorConfig {
 	conf := new(FactorConfig)
 	conf.Cfg = cfg
 
-	tomlPath := fmt.Sprintf(conf.Cfg.GetComponentsDir() + "/factors.toml")
+	tomlPath := fmt.Sprintf(GetComponentsDir() + "/factors.toml")
 	if _, err := toml.DecodeFile(tomlPath, &conf.TomlFactors); err != nil {
 		CheckError(err)
 	}
