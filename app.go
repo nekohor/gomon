@@ -1,74 +1,71 @@
 package gomon
 
-import (
-	// "os"
-	// "path/filepath"
-	"log"
-)
+import "log"
 
 type Application struct {
 	Ctx *Context
 }
 
 func New() *Application {
-	g := new(Application)
-	g.Ctx = NewContext()
-	return g
+	app := new(Application)
+	app.Ctx = NewContext()
+	return app
 }
 
-func (g *Application) RespondCoils(req string) map[string]*Coil {
-	reqConf := NewRequestConfig(req)
+func (app *Application) RespondCoil(req *coilRequest) *Coil {
 
-	coils := make(map[string]*Coil)
+	app.Ctx.Current.CurCoilId = req.CoilId
+	app.Ctx.Current.CurDir = req.CurDir
+	app.Ctx.Current.CurFactorNames = req.FatcorNames
+	coil := NewCoil(app.Ctx)
 
-	for _, coilId := range reqConf.GetCoilIds() {
-		g.Ctx.CurDir = reqConf.GetCurDir(coilId)
-		factorNames := reqConf.GetFactors(coilId)
-		log.Print(g.Ctx.CurDir)
-		log.Print(coilId)
-		log.Print(factorNames)
-		coils[coilId] = NewCoil(g.Ctx, coilId, factorNames)
-	}
-
-	return coils
-}
-
-func (g *Application) ExportCurrent() {
-	var coils map[string]*Coil
-
-	g.Ctx.CurDir = g.Ctx.Cfg.ExportFrom
-	curCoilIds := WalkDir(g.Ctx.CurDir)
-
-	coils = g.GetCoils(curCoilIds)
-	saveFilePath := g.Ctx.Cfg.GetResultFilePath()
-	log.Println(saveFilePath)
-	SaveJson(coils, saveFilePath)
-}
-
-func (g *Application) GetCoil(coilId string) *Coil {
-	factorNames := g.Ctx.FactorConf.GetFactorNames()
-	coil := NewCoil(g.Ctx, coilId, factorNames)
 	return coil
 }
 
+func (app *Application) ExportCurrent() {
+	var coils map[string]*Coil
+
+	curCoilIds := WalkDir(app.Ctx.Current.CurDir)
+	coils = app.ExportCoils(curCoilIds)
+
+	saveFilePath := app.Ctx.Cfg.GetResultFilePath()
+	SaveJson(coils, saveFilePath)
+
+	log.Println(saveFilePath)
+}
+
 //GetCoils 在web api中只用这一种，包括单卷的情况
-func (g *Application) GetCoils(resCoilIds []string) map[string]*Coil {
+func (app *Application) ExportCoils(resCoilIds []string) map[string]*Coil {
+
 	coils := make(map[string]*Coil)
+
 	for _, coilId := range resCoilIds {
-		coils[coilId] = g.GetCoil(coilId)
+
+		coils[coilId] = app.ExportCoil(coilId)
+
 	}
 	return coils
 }
 
-//func (g *Application) ExportBatch() {
+func (app *Application) ExportCoil(coilId string) *Coil {
+
+	app.Ctx.Current.CurCoilId = coilId
+	app.Ctx.Current.CurDir = app.Ctx.Cfg.ExportFrom
+	app.Ctx.Current.CurFactorNames = app.Ctx.FactorConf.GetFactorNames()
+
+	coil := NewCoil(app.Ctx)
+	return coil
+}
+
+//func (app *Application) ExportBatch() {
 //	var coils map[string]*Coil
-//	for _, curDate := range g.Ctx.Config.GetDateArray() {
+//	for _, curDate := range app.Ctx.Config.GetDateArray() {
 //
-//		g.Ctx.CurDir = g.Ctx.Config.GetCurDirInBatchMode(curDate)
-//		curCoilIds := WalkDir(g.Ctx.CurDir)
+//		app.Ctx.Current.CurDir= app.Ctx.Config.GetCurDirInBatchMode(curDate)
+//		curCoilIds := WalkDir(app.Ctx.Current.CurDir)
 //
-//		coils = g.GetCoils(curCoilIds)
-//		saveFilePath := g.Ctx.Config.GetResultFilePathInBatchMode(curDate)
+//		coils = app.GetCoils(curCoilIds)
+//		saveFilePath := app.Ctx.Config.GetResultFilePathInBatchMode(curDate)
 //		log.Println(saveFilePath)
 //		SaveJson(coils, saveFilePath)
 //	}

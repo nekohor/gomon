@@ -5,13 +5,14 @@ type Coil struct {
 	Factors map[string]*Factor `json:"factors"`
 }
 
-func NewCoil(ctx *Context, coilId string, factorNames []string) *Coil {
-	c := new(Coil)
-	c.CoilId = coilId
+func NewCoil(ctx *Context) *Coil {
 
+	c := new(Coil)
+	c.CoilId = ctx.Current.CurCoilId
 	c.Factors = make(map[string]*Factor)
-	for _, factorName := range factorNames {
-		c.Factors[factorName] = NewFactor(ctx, coilId, factorName)
+	for _, factorName := range ctx.Current.CurFactorNames {
+		ctx.Current.CurFactorName = factorName
+		c.Factors[factorName] = NewFactor(ctx)
 	}
 	return c
 }

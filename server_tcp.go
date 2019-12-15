@@ -42,7 +42,7 @@ func handleClient(app *Application, conn net.Conn) {
 		panic("readLen is not smaller than requestBuffNum")
 	}
 
-	coils := app.RespondCoils(string(request))
+	coils := ""
 	b, err := json.MarshalIndent(coils, "", "  ")
 	CheckError(err)
 
