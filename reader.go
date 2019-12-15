@@ -2,7 +2,7 @@ package gomon
 
 /*
 #include <stdio.h>   // 如果要调用C.free 一定要在些包含对应的头文件
-#include <stdlib.h>
+#include <stdlib.h>  // 此段注释与 import "C" 之间不能有空格
 */
 import "C"
 import (

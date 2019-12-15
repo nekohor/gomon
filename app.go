@@ -22,6 +22,19 @@ func (app *Application) RespondCoil(req *coilRequest) *Coil {
 	return coil
 }
 
+func (app *Application) Stat(req *StatsRequest) *Coil {
+
+	app.Ctx.Current.CurCoilId = req.CoilInfo.CoilId
+	app.Ctx.Current.CurDir = req.CoilInfo.CurDir
+	app.Ctx.Current.CurFactorName = req.CoilInfo.FactorName
+	f := NewFactor(app.Ctx)
+
+
+
+
+	return coil
+}
+
 func (app *Application) ExportCurrent() {
 	var coils map[string]*Coil
 
@@ -70,5 +83,3 @@ func (app *Application) ExportCoil(coilId string) *Coil {
 //		SaveJson(coils, saveFilePath)
 //	}
 //}
-
-
