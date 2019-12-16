@@ -21,6 +21,8 @@ type DataType float32
 
 type Reader struct {
 	readFunc uintptr
+
+	mutex *sync.Mutex
 }
 
 func NewReader() *Reader {
@@ -37,37 +39,17 @@ func NewReader() *Reader {
 		panic("err in GetProcAddress")
 	}
 	reader.readFunc = readFunc
+
+	reader.mutex = new(sync.Mutex)
+
 	return reader
 }
 
-// ==================== without cgo start ======================
-//func StrPtr(s string) uintptr {
-//	return uintptr(unsafe.Pointer(syscall.StringToUTF16Ptr(s)))
-//}
-//
-//func INT8FromString(s string) ([]byte, error) {
-//	for i := 0; i < len(s); i++ {
-//		if s[i] == 0 {
-//			return nil, nil
-//		}
-//	}
-//	log.Println(s)
-//	return []byte(s), nil
-//}
-//
-//func StringToINT8(s string) []byte {
-//	a, err := INT8FromString(s)
-//	if err != nil {
-//		panic("syscall: string with NULL passed to StringToINT8")
-//	}
-//	// log.Println(a)
-//	return a
-//}
-//
-//func StringToINT8Ptr(s string) *byte { return &StringToINT8(s)[0] }
-// ========================== without cgo end ===========================
 
 func (reader *Reader) ReadData(ctx *Context, dcaPath, signalName string) (int, []DataType) {
+
+	reader.mutex.Lock()
+	defer reader.mutex.Unlock()
 
 	size := ctx.Cfg.DataMaxNum
 	dataArray := make([]DataType, size)
@@ -95,15 +77,11 @@ func (reader *Reader) ReadData(ctx *Context, dcaPath, signalName string) (int, [
 		callArgSignalName := uintptr(unsafe.Pointer(CgoSignalName))
 		callArgDataArray := uintptr(unsafe.Pointer(&dataArray[0]))
 
-		var l *sync.Mutex
-		l = new(sync.Mutex)
-		l.Lock()
 		sizeUintptr, _, _ := syscall.Syscall(
 			reader.readFunc, 3,
 			callArgDcaPath,
 			callArgSignalName,
 			callArgDataArray)
-		l.Unlock()
 
 		size = int(sizeUintptr)
 
@@ -133,3 +111,31 @@ func (reader *Reader) ReadData(ctx *Context, dcaPath, signalName string) (int, [
 
 	return size, buffArray
 }
+
+
+// ==================== without cgo start ======================
+//func StrPtr(s string) uintptr {
+//	return uintptr(unsafe.Pointer(syscall.StringToUTF16Ptr(s)))
+//}
+//
+//func INT8FromString(s string) ([]byte, error) {
+//	for i := 0; i < len(s); i++ {
+//		if s[i] == 0 {
+//			return nil, nil
+//		}
+//	}
+//	log.Println(s)
+//	return []byte(s), nil
+//}
+//
+//func StringToINT8(s string) []byte {
+//	a, err := INT8FromString(s)
+//	if err != nil {
+//		panic("syscall: string with NULL passed to StringToINT8")
+//	}
+//	// log.Println(a)
+//	return a
+//}
+//
+//func StringToINT8Ptr(s string) *byte { return &StringToINT8(s)[0] }
+// ========================== without cgo end ===========================

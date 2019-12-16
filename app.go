@@ -45,7 +45,6 @@ func (app *Application) Stat(req *StatsRequest) string {
 		s =  NewStats(app.Ctx, f.Data, req)
 	}
 
-
 	return s.Calculate()
 }
 

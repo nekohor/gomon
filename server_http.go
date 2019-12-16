@@ -75,9 +75,9 @@ func RunHttpServer(app *Application) {
 			req.LengthDivision.LengthName = c.DefaultQuery("lengthName", "")
 
 
-			req.LengthDivision.HeadLen, err = strconv.Atoi(c.DefaultQuery("headLen", ""))
+			req.LengthDivision.HeadLen, err = strconv.Atoi(c.DefaultQuery("headLen", "0"))
 			CheckError(err)
-			req.LengthDivision.TailLen, err = strconv.Atoi(c.DefaultQuery("tailLen", ""))
+			req.LengthDivision.TailLen, err = strconv.Atoi(c.DefaultQuery("tailLen", "0"))
 			CheckError(err)
 
 			headPerc, err := strconv.ParseFloat(c.DefaultQuery("headPerc", "-100000000"), 32)

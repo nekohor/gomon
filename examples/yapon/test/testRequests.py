@@ -13,7 +13,7 @@ params = {
     "tolerance": 20,
     "unit": "um",
 
-    "lengthName": "s",
+    "lengthName": "main",
     "headLen": 17,
     "tailLen": 27,
     "headCut": 5,
