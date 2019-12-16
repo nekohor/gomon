@@ -11,12 +11,12 @@ type CoilInfo struct {
 	FactorName string `json:"factorName"`
 }
 type StatsOption struct {
-	FunctionName string     `json:"functionName"`
-	Aim          float32    `json:"aim"`
-	Tolerance    float32    `json:"tolerance"`
-	Upper        float32    `json:"upper"`
-	Lower        float32    `json:"lower"`
-	Unit         string     `json:"unit"`
+	FunctionName string   `json:"functionName"`
+	Aim          DataType `json:"aim"`
+	Tolerance    DataType `json:"tolerance"`
+	Upper        DataType `json:"upper"`
+	Lower        DataType `json:"lower"`
+	Unit         string   `json:"unit"`
 }
 type LengthDivision struct {
 	LengthName string `json:"lengthName"`
@@ -24,8 +24,8 @@ type LengthDivision struct {
 	HeadLen int `json:"headLen"`
 	TailLen int `json:"tailLen"`
 
-	HeadPerc float32 `json:"headPerc"`
-	TailPerc float32 `json:"tailPerc"`
+	HeadPerc DataType `json:"headPerc"`
+	TailPerc DataType `json:"tailPerc"`
 
 	HeadCut int `json:"headCut"`
 	TailCut int `json:"tailCut"`
@@ -46,7 +46,7 @@ func (s *StatsRequest) SetPartLen(headLen int, tailLen int) {
 	s.LengthDivision.TailLen = tailLen
 }
 
-func (s *StatsRequest) SetPartPerc(headPerc float32, tailPerc float32) {
+func (s *StatsRequest) SetPartPerc(headPerc DataType, tailPerc DataType) {
 	s.LengthDivision.HeadPerc = headPerc
 	s.LengthDivision.TailPerc = tailPerc
 }

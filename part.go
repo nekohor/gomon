@@ -2,7 +2,7 @@ package gomon
 
 type Part struct {
 	size int
-	data []dataType
+	data []DataType
 }
 
 func NewPart(ctx *Context, partName string) *Part {

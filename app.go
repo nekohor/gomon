@@ -1,6 +1,11 @@
 package gomon
 
-import "log"
+import (
+	//"fmt"
+	"log"
+	cache "github.com/patrickmn/go-cache"
+
+)
 
 type Application struct {
 	Ctx *Context
@@ -22,17 +27,26 @@ func (app *Application) RespondCoil(req *coilRequest) *Coil {
 	return coil
 }
 
-func (app *Application) Stat(req *StatsRequest) *Coil {
+func (app *Application) Stat(req *StatsRequest) string {
 
 	app.Ctx.Current.CurCoilId = req.CoilInfo.CoilId
 	app.Ctx.Current.CurDir = req.CoilInfo.CurDir
 	app.Ctx.Current.CurFactorName = req.CoilInfo.FactorName
-	f := NewFactor(app.Ctx)
+
+	key := req.CoilInfo.CoilId + "/" + req.CoilInfo.FactorName
+
+	var s *Stats
+	data, found := app.Ctx.CachePool.Get(key)
+	if found {
+		s = NewStats(app.Ctx, data.([]DataType), req)
+	} else {
+		f := NewFactor(app.Ctx)
+		app.Ctx.CachePool.Set(key, f.Data, cache.DefaultExpiration)
+		s =  NewStats(app.Ctx, f.Data, req)
+	}
 
 
-
-
-	return coil
+	return s.Calculate()
 }
 
 func (app *Application) ExportCurrent() {

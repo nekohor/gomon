@@ -27,6 +27,11 @@ func StringToFloat32(str string) float32 {
 	return math.Float32frombits(bits)
 }
 
+func StringToDataType(str string) DataType {
+	bits := binary.LittleEndian.Uint32([]byte(str))
+
+	return DataType(math.Float32frombits(bits))
+}
 
 func Float64ToByte(float float64) []byte {
 	bits := math.Float64bits(float)

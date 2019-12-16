@@ -17,7 +17,7 @@ import (
 	"sync"
 )
 
-type dataType float32
+type DataType float32
 
 type Reader struct {
 	readFunc uintptr
@@ -67,10 +67,10 @@ func NewReader() *Reader {
 //func StringToINT8Ptr(s string) *byte { return &StringToINT8(s)[0] }
 // ========================== without cgo end ===========================
 
-func (reader *Reader) ReadData(ctx *Context, dcaPath, signalName string) (int, []dataType) {
+func (reader *Reader) ReadData(ctx *Context, dcaPath, signalName string) (int, []DataType) {
 
 	size := ctx.Cfg.DataMaxNum
-	dataArray := make([]dataType, size)
+	dataArray := make([]DataType, size)
 	if IsExist(dcaPath) == true {
 
 		//callArgDcaPath := uintptr(unsafe.Pointer(StringToINT8Ptr(dcaPath)))
@@ -120,7 +120,7 @@ func (reader *Reader) ReadData(ctx *Context, dcaPath, signalName string) (int, [
 		log.Println("[Warning] wrong DCA path or signal name in DLL function")
 	}
 
-	buffArray := make([]dataType, len(dataArray))
+	buffArray := make([]DataType, len(dataArray))
 
 	for i := 0; i < len(dataArray); i++ {
 

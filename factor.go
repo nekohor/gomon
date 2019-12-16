@@ -6,7 +6,7 @@ import (
 
 type Factor struct {
 	FactorName string     `json:"factorName"`
-	Data       []dataType `json:"data"`
+	Data       []DataType `json:"data"`
 }
 
 func NewFactor(ctx *Context) *Factor {
@@ -29,8 +29,8 @@ func (f *Factor) PrintLog() {
 	log.Println("")
 }
 
-func (f *Factor) GetData(ctx *Context) []dataType {
-	curData := make([]dataType, 3)
+func (f *Factor) GetData(ctx *Context) []DataType {
+	curData := make([]DataType, 3)
 	factorName := ctx.Current.CurFactorName
 	switch factorName {
 	case "leveling1", "leveling2", "leveling3", "leveling4", "leveling5", "leveling6", "leveling7":
@@ -54,37 +54,37 @@ func (f *Factor) GetData(ctx *Context) []dataType {
 	return curData
 }
 
-func (f *Factor) GetFactorData0() []dataType {
-	factorData := make([]dataType, 1)
+func (f *Factor) GetFactorData0() []DataType {
+	factorData := make([]DataType, 1)
 	return factorData
 }
 
-func (f *Factor) GetFactorData1(ctx *Context, single string) []dataType {
+func (f *Factor) GetFactorData1(ctx *Context, single string) []DataType {
 	part := NewPart(ctx, single)
-	factorData := make([]dataType, part.size)
+	factorData := make([]DataType, part.size)
 	for i := 0; i < part.size; i++ {
 		factorData[i] = part.data[i]
 	}
 	return factorData
 }
 
-func (f *Factor) GetFactorData2(ctx *Context, os string, ds string) []dataType {
+func (f *Factor) GetFactorData2(ctx *Context, os string, ds string) []DataType {
 	partOS := NewPart(ctx, os)
 	partDS := NewPart(ctx, ds)
 
-	factorData := make([]dataType, partOS.size)
+	factorData := make([]DataType, partOS.size)
 	for i := 0; i < partOS.size; i++ {
 		factorData[i] = partOS.data[i] - partDS.data[i]
 	}
 	return factorData
 }
 
-func (f *Factor) GetFactorData3(ctx *Context, os, ct, ds string) []dataType {
+func (f *Factor) GetFactorData3(ctx *Context, os, ct, ds string) []DataType {
 	partOS := NewPart(ctx, os)
 	partCT := NewPart(ctx, ct)
 	partDS := NewPart(ctx, ds)
 
-	factorData := make([]dataType, partCT.size)
+	factorData := make([]DataType, partCT.size)
 	for i := 0; i < partOS.size; i++ {
 		factorData[i] = partCT.data[i] - (partOS.data[i]+partDS.data[i])/2
 	}
@@ -92,12 +92,12 @@ func (f *Factor) GetFactorData3(ctx *Context, os, ct, ds string) []dataType {
 
 }
 
-func (f *Factor) GetFactorData3Reverse(ctx *Context, os, ct, ds string) []dataType {
+func (f *Factor) GetFactorData3Reverse(ctx *Context, os, ct, ds string) []DataType {
 	partOS := NewPart(ctx, os)
 	partCT := NewPart(ctx, ct)
 	partDS := NewPart(ctx, ds)
 
-	factorData := make([]dataType, partCT.size)
+	factorData := make([]DataType, partCT.size)
 	for i := 0; i < partOS.size; i++ {
 		factorData[i] = (partOS.data[i]+partDS.data[i])/2 - partCT.data[i]
 	}

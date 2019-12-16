@@ -24,14 +24,21 @@ func RunHttpServer(app *Application) {
 			req.FatcorNames = strings.Split(factorsQuery, ",")
 
 			if req.CurDir == "" || factorsQuery == "" {
-				c.JSON(http.StatusNotFound, gin.H{"error": "Invalid query"})
+				c.JSON(
+					http.StatusNotFound,
+					gin.H{
+						"code": 1230,
+						"error": "Invalid query",
+					})
+			} else {
+				c.JSON(
+					http.StatusOK,
+					gin.H{
+						"code": 1231,
+						"exports": app.RespondCoil(req),
+					})
 			}
 
-			c.JSON(
-				http.StatusOK,
-				gin.H{
-					"exports": app.RespondCoil(req),
-				})
 		})
 
 		v1.GET("/ponds/stats/:coilId", func(c *gin.Context) {
@@ -43,38 +50,65 @@ func RunHttpServer(app *Application) {
 			req.CoilInfo.FactorName = c.DefaultQuery("factorName", "")
 
 			req.StatsOption.FunctionName = c.DefaultQuery("functionName", "")
-			req.StatsOption.Aim = StringToFloat32(c.DefaultQuery("aim", ""))
-			req.StatsOption.Tolerance = StringToFloat32(c.DefaultQuery("tolerance", ""))
-			req.StatsOption.Upper = StringToFloat32(c.DefaultQuery("upper", ""))
-			req.StatsOption.Lower = StringToFloat32(c.DefaultQuery("lower", ""))
+
+			// stats options
+			aim, err := strconv.ParseFloat(c.DefaultQuery("aim", "0"),32)
+			CheckError(err)
+			req.StatsOption.Aim = DataType(aim)
+
+			tol, err := strconv.ParseFloat(c.DefaultQuery("tolerance", "0"), 32)
+			CheckError(err)
+			req.StatsOption.Tolerance = DataType(tol)
+
+			upper, err := strconv.ParseFloat(c.DefaultQuery("upper", "0"), 32)
+			CheckError(err)
+			req.StatsOption.Upper = DataType(upper)
+
+			lower, err := strconv.ParseFloat(c.DefaultQuery("lower", "0"), 32)
+			CheckError(err)
+			req.StatsOption.Lower = DataType(lower)
+
 			req.StatsOption.Unit = c.DefaultQuery("unit", "")
 
+
+			// length division
 			req.LengthDivision.LengthName = c.DefaultQuery("lengthName", "")
 
-			var err error
+
 			req.LengthDivision.HeadLen, err = strconv.Atoi(c.DefaultQuery("headLen", ""))
 			CheckError(err)
 			req.LengthDivision.TailLen, err = strconv.Atoi(c.DefaultQuery("tailLen", ""))
 			CheckError(err)
 
-			req.LengthDivision.HeadPerc = StringToFloat32(c.DefaultQuery("headPerc", "-1"))
-			req.LengthDivision.TailPerc = StringToFloat32(c.DefaultQuery("tailPerc", "-1"))
-
-			req.LengthDivision.HeadCut, err = strconv.Atoi(c.DefaultQuery("headCut", ""))
+			headPerc, err := strconv.ParseFloat(c.DefaultQuery("headPerc", "-100000000"), 32)
 			CheckError(err)
-			req.LengthDivision.TailCut, err = strconv.Atoi(c.DefaultQuery("tailCut", ""))
+			req.LengthDivision.HeadPerc = DataType(headPerc)
+
+			tailPerc, err := strconv.ParseFloat(c.DefaultQuery("tailPerc", "-100000000"), 32)
+			CheckError(err)
+			req.LengthDivision.TailPerc = DataType(tailPerc)
+
+			req.LengthDivision.HeadCut, err = strconv.Atoi(c.DefaultQuery("headCut", "5"))
+			CheckError(err)
+			req.LengthDivision.TailCut, err = strconv.Atoi(c.DefaultQuery("tailCut", "5"))
 			CheckError(err)
 
 			if req.CoilInfo.CurDir == "" || req.CoilInfo.FactorName == "" {
-				c.JSON(http.StatusNotFound, gin.H{"error": "Invalid query"})
+				c.JSON(
+					http.StatusNotFound,
+					gin.H{
+						"code": 1230,
+						"msg": "Invalid query",
+					})
+			} else {
+				c.JSON(
+					http.StatusOK,
+					gin.H{
+						"code": 1231,
+						"msg": "query successfully",
+						"stats": app.Stat(req),
+					})
 			}
-
-			c.JSON(
-				http.StatusOK,
-				gin.H{
-					"stats": app.Stat(req),
-				})
-
 		})
 	}
 
